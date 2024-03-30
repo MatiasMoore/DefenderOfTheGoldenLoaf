@@ -27,6 +27,9 @@ public class PlayerControls : MonoBehaviour
     [SerializeField]
     public ButtonControls _scrollDown;
 
+    private InputAction _moveAction;
+    public static Vector2 Movement;
+
     private List<ButtonControls> _allControls;
 
     public static PlayerControls Instance { get; private set; }
@@ -38,13 +41,18 @@ public class PlayerControls : MonoBehaviour
         _playerInput = GetComponent<PlayerInput>();
         _pressPositionAction = _playerInput.actions[_positionActionName];
         _allControls = GetComponents<ButtonControls>().ToList();
-       
+        _moveAction = _playerInput.actions["Move"];
         foreach (var control in _allControls)
         {
             control.Init(this);
         }
 
         Instance = this;
+    }
+
+    private void Update()
+    {
+        Movement = _moveAction.ReadValue<Vector2>();
     }
 
     private void OnDisable()
