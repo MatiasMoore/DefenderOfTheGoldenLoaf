@@ -377,6 +377,8 @@ GameObject:
   - component: {fileID: 84920905}
   - component: {fileID: 84920904}
   - component: {fileID: 84920903}
+  - component: {fileID: 84920907}
+  - component: {fileID: 84920906}
   m_Layer: 0
   m_Name: PlayerControls
   m_TagString: Untagged
@@ -397,8 +399,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _positionActionName: CursorPosition
-  _mainClick: {fileID: 0}
-  _alternativeClick: {fileID: 0}
+  _mainClick: {fileID: 84920907}
+  _alternativeClick: {fileID: 84920906}
   _scrollUp: {fileID: 0}
   _scrollDown: {fileID: 0}
 --- !u!114 &84920904
@@ -446,6 +448,34 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &84920906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 84920902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d58c6aef85276cf419cd18d8e279f4a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pressActionName: AlternativeClick
+  _printDebugMessages: 0
+--- !u!114 &84920907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 84920902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d58c6aef85276cf419cd18d8e279f4a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pressActionName: MainClick
+  _printDebugMessages: 0
 --- !u!1001 &199076642
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1574,7 +1604,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5275739501971082781, guid: ce6b6aa78190fca4485c731e74be8c7a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.085462466
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5275739501971082781, guid: ce6b6aa78190fca4485c731e74be8c7a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5181,7 +5211,7 @@ Transform:
   m_GameObject: {fileID: 2100020927}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.9169643, y: -1.5247107, z: 0.07850834}
+  m_LocalPosition: {x: -1.11, y: 2.15, z: 0.07850834}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
