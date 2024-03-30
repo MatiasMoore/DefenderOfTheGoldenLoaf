@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Dish : MonoBehaviour
+public class Dish
 {
     [SerializeField]
     private Recipe _recipe;
@@ -14,8 +14,9 @@ public class Dish : MonoBehaviour
 
     private bool _isFinished = false;
 
-    private void Awake()
+    public Dish(Recipe recipe)
     {
+        _recipe = recipe;
         _neededIngredients = _recipe.GetRequiredIngredients();
     }
 
@@ -31,6 +32,8 @@ public class Dish : MonoBehaviour
 
         return true;
     }
+
+    public Recipe GetRecipe() => _recipe;
 
     private void FinishDish()
     {
