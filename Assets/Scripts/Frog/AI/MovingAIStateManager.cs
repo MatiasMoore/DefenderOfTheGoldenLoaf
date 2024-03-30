@@ -3,10 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using Random = UnityEngine.Random;
 
 public class MovingAIStateManager : AIStateManager
 {
+
+    [SerializeField]
+    public event UnityAction OnPush;
+    [SerializeField]
+    public event UnityAction OnEscape;
+
     [Serializable]
     public struct MovingAIStateParams
     {
@@ -17,6 +24,11 @@ public class MovingAIStateManager : AIStateManager
     }
 
     public MovingAIStateParams movingAIStateParam;
+
+    public void Escaped()
+    {
+        OnEscape?.Invoke();
+    }
 
     protected override void OnEnable()
     {
@@ -44,6 +56,7 @@ public class MovingAIStateManager : AIStateManager
 
     public void StopForSeconds(float seconds)
     {
+        OnPush.Invoke();
         _isUpdate = false;
         movingAIStateParam.objectMovement.SetIsUpdate(false);
         StartCoroutine(SetIsUpdateWithDelay(true, seconds));

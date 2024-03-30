@@ -47,7 +47,7 @@ public class Inventory : MonoBehaviour
         _currentItem.UseAtPos(pos);
     }
 
-    private void PickupItemAtPos(Vector2 pos)
+    public void PickupItemAtPos(Vector2 pos)
     {
         var collider = Physics2D.OverlapPoint(pos);
         if (collider != null && collider.TryGetComponent<InventoryItem>(out InventoryItem newItem))
@@ -60,14 +60,14 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    private void DropItem()
+    public void DropItem()
     {
         _currentItem.transform.parent = null;
         _currentItem.Dropped();
         _currentItem = null;
     }
 
-    private void DestroyItem()
+    public void DestroyItem()
     {
         if (_currentItem == null)
             return;
