@@ -15,7 +15,7 @@ public class RecipeTable : MonoBehaviour
         _currentDish = newDish;
     }
 
-    public bool TryToAddInstruction(IngredientWithInstruction ingredient)
+    public bool TryToAddIngredient(IngredientWithInstruction ingredient)
     {
         bool success = _currentDish.TryToAddIngredient(ingredient);
         if (success)

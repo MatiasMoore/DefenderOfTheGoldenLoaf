@@ -58,6 +58,7 @@ public class Dish : MonoBehaviour
                 && needed.GetIngredientInstruction() == ingredient.GetIngredientInstruction())
             {
                 _neededIngredients.Remove(needed);
+                return;
             }
         }
     }
