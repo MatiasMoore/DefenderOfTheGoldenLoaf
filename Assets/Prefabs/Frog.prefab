@@ -175,6 +175,7 @@ GameObject:
   - component: {fileID: 5996273207254556545}
   - component: {fileID: 1247076840092956815}
   - component: {fileID: 3995533905744131842}
+  - component: {fileID: 1505962319655116233}
   m_Layer: 6
   m_Name: Frog
   m_TagString: Untagged
@@ -301,7 +302,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.017514944, y: 0.1926632}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -312,8 +313,24 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.3869803, y: 0.42201042}
   m_EdgeRadius: 0
+--- !u!208 &1505962319655116233
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6162739170036624776}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.25, y: 0.3, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.2, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &7732542268625047229
 GameObject:
   m_ObjectHideFlags: 0
@@ -403,4 +420,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65bf3eada32597841a575a3a3bdc2a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _minDistanceToTarget: 1
+  _minDistanceToTarget: 2
