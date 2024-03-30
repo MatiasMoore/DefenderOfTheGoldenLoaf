@@ -15,34 +15,9 @@ public class Recipe : ScriptableObject
     [SerializeField]
     private List<IngredientWithInstruction> _requiredInstructions = new();
 
-    private bool _isFinished = false;
-
-    private List<IngredientWithInstruction> _finishedInstructions = new();
-    public static UnityAction<Recipe, IngredientWithInstruction> AddedInstructionToRecipe;
-    public static UnityAction<Recipe> RecipeFinished;
-
-    public bool AddFinishedIntruction(IngredientWithInstruction newInstruction)
+    public List<IngredientWithInstruction> GetRequiredIngredients()
     {
-        if (!_requiredInstructions.Contains(newInstruction))  
-            return false; 
-        
-
-        _finishedInstructions.Add(newInstruction);
-        AddedInstructionToRecipe?.Invoke(this, newInstruction);
-        _requiredInstructions.Remove(newInstruction);
-
-        if (_requiredInstructions.Count == 0)
-            FinishRecipe();
-
-        return true;
-    }
-
-    public bool IsFinished() => _isFinished;
-
-    private void FinishRecipe()
-    {
-        _isFinished = true;
-        RecipeFinished?.Invoke(this);
+        return new List<IngredientWithInstruction>(_requiredInstructions);
     }
 
 }

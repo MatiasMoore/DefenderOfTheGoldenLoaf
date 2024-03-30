@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "ScriptableObjs/IngredientWithInstruction")]
 public class IngredientWithInstruction : ScriptableObject
 {
-    enum IngredientInstruction
+    public enum IngredientInstruction
     {
         none, bake, cut
     }
@@ -18,4 +18,8 @@ public class IngredientWithInstruction : ScriptableObject
 
     [SerializeField]
     private string _instructionName;
+
+    public Ingredient.IngredientType GetIngredientType() => _ingredient.GetIngredientType();
+
+    public IngredientInstruction GetIngredientInstruction() => _instruction;
 }
