@@ -38,8 +38,8 @@ public class Timer
 
         if (Time.time >= _targetTime)
         {
-            OnTimerDone?.Invoke();
             StopTimer();
+            OnTimerDone?.Invoke();      
         }
     }
 
