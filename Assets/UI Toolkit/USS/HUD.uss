@@ -1,0 +1,45 @@
+.ingredient {
+    flex-grow: 1;
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-image: url('project://database/Assets/Textures/Food/bread.png?fileID=21300000&guid=9e297f6e51636364283d2a19d7a9f672&type=3#bread');
+    top: 227px;
+    left: 32px;
+    display: flex;
+}
+
+.food {
+    flex-grow: 1;
+    position: absolute;
+    background-image: url('project://database/Assets/Pictures/1.png?fileID=21300000&guid=2816b2ce391e1ce4489dbc3df2fa6943&type=3#1');
+    width: 80px;
+    height: 80px;
+    top: 45px;
+    left: 77px;
+    display: flex;
+}
+
+.label {
+    -unity-text-align: middle-center;
+    -unity-font: url('project://database/Assets/Fonts/vcrosdmonorusbyd.ttf?fileID=12800000&guid=02d45b90076188f47b79dfe301da7c62&type=3#vcrosdmonorusbyd');
+    -unity-font-definition: initial;
+    margin-top: 170px;
+    font-size: 28px;
+    margin-right: 0;
+    margin-left: 0;
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    white-space: normal;
+}
+
+.order {
+    flex-grow: 0;
+    background-image: url('project://database/Assets/Pictures/Order.png?fileID=21300000&guid=fa36923b0eb89324b955c621c1c87c8d&type=3#Order');
+    position: relative;
+    width: 230px;
+    height: 280px;
+}
