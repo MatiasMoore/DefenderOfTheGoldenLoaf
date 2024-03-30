@@ -10,6 +10,8 @@ public class RecipeTable : MonoBehaviour
 
     private UnityAction<RecipeTable, Dish> FinishedDish;
 
+    public bool IsFree() => _currentDish == null;
+
     public void SetCurrentDish(Dish newDish)
     {
         _currentDish = newDish;

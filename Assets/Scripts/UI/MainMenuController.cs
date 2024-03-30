@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 namespace DefenderOfTheGoldenLoaf.UI
@@ -49,6 +50,7 @@ namespace DefenderOfTheGoldenLoaf.UI
         private void OnPlayButtonClicked(ClickEvent evt)
         {
             Debug.Log("Play button clicked!");
+            SceneManager.LoadScene(1); // TEMP SOLUTION
         }
 
         private void OnSettingsButtonClicked(ClickEvent evt)

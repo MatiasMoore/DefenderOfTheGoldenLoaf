@@ -236,7 +236,6 @@ GameObject:
   - component: {fileID: 455033913}
   - component: {fileID: 455033912}
   - component: {fileID: 455033914}
-  - component: {fileID: 455033915}
   m_Layer: 5
   m_Name: UIDocument
   m_TagString: Untagged
@@ -258,7 +257,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PanelSettings: {fileID: 11400000, guid: 2779de6aaf1a644418b647ab8cea3317, type: 2}
   m_ParentUI: {fileID: 0}
-  sourceAsset: {fileID: 9197481963319205126, guid: 0bc7399ff51de9144b296f927a0b32e5, type: 3}
+  sourceAsset: {fileID: 9197481963319205126, guid: beef76e8834cc0846b1b4f7155fb7e0e, type: 3}
   m_SortingOrder: 0
 --- !u!224 &455033913
 RectTransform:
@@ -289,24 +288,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 455033911}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ffb41bf6fd644e40856be3f28162118, type: 3}
+  m_Script: {fileID: 11500000, guid: 3877c2d20e26a7948bb9cc5ab96a1bc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &455033915
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 455033911}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9fc83a34a2478e94980b6732ae217cbc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  firstRecipe: {fileID: 11400000, guid: 615b7788d9d874f429d8e0ed8275de69, type: 2}
-  secondRecipe: {fileID: 11400000, guid: 615b7788d9d874f429d8e0ed8275de69, type: 2}
-  controller: {fileID: 455033914}
 --- !u!1 &837315137
 GameObject:
   m_ObjectHideFlags: 0
