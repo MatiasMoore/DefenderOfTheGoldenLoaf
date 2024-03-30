@@ -46,7 +46,7 @@ public class HUDController : MonoBehaviour
     }
 
     // ------ Add elements to HUD ------
-    public void AddRecipeElement(Recipe recipe)
+    public VisualElement AddRecipeElement(Recipe recipe)
     { 
         // Ñîçäàíèå îáúåêòà "recipe"
         VisualElement recipeElement = new VisualElement();
@@ -90,10 +90,12 @@ public class HUDController : MonoBehaviour
         timer.text = "15:01"; // ÇÄÅÑÜ ÄÎËÆÍÎ ÇÀÄÀÂÀÒÜÑß ÍÀ×ÀËÜÍÎÅ ÂĞÅÌß
         timer.AddToClassList("label");
         recipeElement.Add(timer);
+
+        return recipeElement;
     }
 
-    private void RemoveRecipeElement()
+    public void RemoveRecipeElement(VisualElement recipe)
     {
-
+        recipe.RemoveFromHierarchy();
     }
 }

@@ -62,6 +62,8 @@ public class Inventory : MonoBehaviour
 
     public void DropItem()
     {
+        if (_currentItem == null)
+            return;
         _currentItem.transform.parent = null;
         _currentItem.Dropped();
         _currentItem = null;

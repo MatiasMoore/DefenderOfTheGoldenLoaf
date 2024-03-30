@@ -28,7 +28,8 @@ public class OrderSystem : MonoBehaviour
             if (table.IsFree())
             {
                 var dish = new Dish(_recipes[0]);
-                var order = new Order(dish, table);
+                var elem = _controller.AddRecipeElement(dish.GetRecipe());
+                var order = new Order(dish, table, elem);
                 AddOrder(order);
                 table.SetCurrentDish(dish);
             }
@@ -37,14 +38,14 @@ public class OrderSystem : MonoBehaviour
 
     private void AddOrder(Order order)
     {
-        _orders.Add(order);
-        _controller.AddRecipeElement(order.GetRecipe());
+        _orders.Add(order);   
     }
 
     private void RemoveOrder(Order order) 
     {
         _orders.Remove(order);
         Debug.Log("Removing order!");
+        _controller.RemoveRecipeElement(order.GetVisualElement());
     }
 
     private void OrderFinished(Order order)
