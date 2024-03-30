@@ -13,11 +13,16 @@ public class Recipe : ScriptableObject
     private GameObject _object;
 
     [SerializeField]
+    private Sprite _dishIcon;
+
+    [SerializeField]
     private List<IngredientWithInstruction> _requiredInstructions = new();
 
     public List<IngredientWithInstruction> GetRequiredIngredients()
     {
         return new List<IngredientWithInstruction>(_requiredInstructions);
     }
+
+    public Sprite GetDishIcon() => _dishIcon;
 
 }
