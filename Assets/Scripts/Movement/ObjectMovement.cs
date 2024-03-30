@@ -6,6 +6,8 @@ using UnityEngine.AI;
 
 public class ObjectMovement : MonoBehaviour
 {
+    private bool _isUpdate = true;
+
     [SerializeField]
     private float _accelerationTime = 0.3f;
 
@@ -63,7 +65,10 @@ public class ObjectMovement : MonoBehaviour
     }
 
     private void FixedUpdate()
-    {
+    {   
+        if (!_isUpdate)
+            return;
+
         if(IsDynamicUpdateData)
         {
             _objectMovementState.SetAccelerationTime(_accelerationTime);
@@ -223,5 +228,10 @@ public class ObjectMovement : MonoBehaviour
         }
 
         _velocity = _rigidbody.velocity;
+    }
+
+    public void SetIsUpdate(bool isUpdate)
+    {
+        _isUpdate = isUpdate;
     }
 }

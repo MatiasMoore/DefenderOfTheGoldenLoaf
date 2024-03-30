@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -36,10 +37,24 @@ public class MovingAIStateManager : AIStateManager
     [ContextMenu("Choose new target")]
     public void ChooseNewTarget()
     {
-        //choose not the same random target
-
         List<Transform> possibleTargets = new List<Transform>(movingAIStateParam.possibleTargets);
         possibleTargets.Remove(movingAIStateParam.target);
         movingAIStateParam.target = possibleTargets[Random.Range(0, possibleTargets.Count)];
     }
+
+    public void StopForSeconds(float seconds)
+    {
+        _isUpdate = false;
+        movingAIStateParam.objectMovement.SetIsUpdate(false);
+        StartCoroutine(SetIsUpdateWithDelay(true, seconds));
+        
+    }
+
+    private IEnumerator SetIsUpdateWithDelay(bool state, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        _isUpdate = state;
+        movingAIStateParam.objectMovement.SetIsUpdate(state);
+    }
+
 }
