@@ -6,6 +6,10 @@ public class Bootstrap : MonoBehaviour
 {
     [SerializeField]
     private PlayerControls _playerControls;
+
+    [SerializeField]
+    private Player _player;
+
     private void Start()
     {
         if (_playerControls != null)
@@ -15,5 +19,14 @@ public class Bootstrap : MonoBehaviour
         {
             Debug.LogWarning("Player controls not found");
         }
+
+        if (_player != null)
+        {
+            _player.Init();
+        } else
+        {
+            Debug.LogWarning("Player not found");
+        }
+
     }
 }
