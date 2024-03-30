@@ -20,8 +20,10 @@ public class RecipeTable : MonoBehaviour
 
     public bool TryToAddIngredient(IngredientWithInstruction ingredient)
     {
-        bool success = _currentDish.TryToAddIngredient(ingredient);
-        return success;
+        if (_currentDish == null)
+            return false;
+
+        return _currentDish.TryToAddIngredient(ingredient);
     }
 
     private void OnDishFinish()
