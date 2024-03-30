@@ -42,6 +42,7 @@ public class MoveToTargetFrogAI : MovingAiPrimitive
 
         if (Vector3.Distance(GetMovingStateManager().movingAIStateParam.target.position, GetMovingStateManager().movingAIStateParam.objectMovement.transform.position) < _minDistanceToTarget)
         {
+            GetMovingStateManager().Pickup();
             GetMovingStateManager().SwitchToState("Escape");
             return;
         }

@@ -17,22 +17,23 @@ public class StealManager : MonoBehaviour
     {
         _movingAIStateManager.OnPush += Drop;
         _movingAIStateManager.OnEscape += DestroyElement;
+        _movingAIStateManager.OnPickup += TryToSteal;
     }
 
     private void Update()
     {
         if (_movingAIStateManager.movingAIStateParam.target != null)
         {
-            if (Vector2.Distance(transform.position, _movingAIStateManager.movingAIStateParam.target.position) < _stealRadius)
-            {
-                TryToSteal();
-            }
+
         }
     }
 
     private void TryToSteal()
     {
-        _inventory.PickupItemAtPos(_movingAIStateManager.movingAIStateParam.target.position);
+        if (Vector2.Distance(transform.position, _movingAIStateManager.movingAIStateParam.target.position) < _stealRadius)
+        {
+            _inventory.PickupItemAtPos(_movingAIStateManager.movingAIStateParam.target.position);
+        }
     }
 
     private void Drop()

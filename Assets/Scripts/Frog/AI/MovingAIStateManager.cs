@@ -13,6 +13,8 @@ public class MovingAIStateManager : AIStateManager
     public event UnityAction OnPush;
     [SerializeField]
     public event UnityAction OnEscape;
+    [SerializeField]
+    public event UnityAction OnPickup;
 
     [Serializable]
     public struct MovingAIStateParams
@@ -28,6 +30,11 @@ public class MovingAIStateManager : AIStateManager
     public void Escaped()
     {
         OnEscape?.Invoke();
+    }
+
+    public void Pickup()
+    {
+        OnPickup?.Invoke();
     }
 
     protected override void OnEnable()
