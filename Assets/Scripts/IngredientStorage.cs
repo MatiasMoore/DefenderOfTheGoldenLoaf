@@ -5,7 +5,10 @@ using UnityEngine;
 public class IngredientStorage : MonoBehaviour
 {
     [SerializeField]
-    private Ingredient _ingredientToCreate;
+    private Transform _spawn;
+
+    [SerializeField]
+    private GameObject _ingredientToCreate;
 
     [SerializeField]
     private int _maxCapacity = 10;
@@ -32,6 +35,15 @@ public class IngredientStorage : MonoBehaviour
         StartCreating();
     }
 
+    private void Update()
+    {
+        if (_spawn.childCount == 0 && _currentIngredients > 0)
+        {
+            _currentIngredients--;
+            Instantiate(_ingredientToCreate, this.transform.position + new Vector3(0, 0, -1), Quaternion.identity, _spawn);
+        }
+    }
+
     public void StartCreating()
     {
         StopCreating();
@@ -54,17 +66,6 @@ public class IngredientStorage : MonoBehaviour
     public float GetCycleDuration() => _cycleDuration;
 
     public void SetCycleDuration(float newDuration) => _cycleDuration = newDuration;
-
-    public bool TryToTakeIngredient(out Ingredient newIngredient)
-    {
-        newIngredient = null;
-        if (_currentIngredients <= 0)
-            return false;
-
-        newIngredient = _ingredientToCreate;
-
-        return true;
-    }
 
     private IEnumerator CreateIngredientsCoroutine()
     {
