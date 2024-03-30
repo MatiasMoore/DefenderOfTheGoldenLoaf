@@ -25,4 +25,6 @@ public class Recipe : ScriptableObject
 
     public Sprite GetDishIcon() => _dishIcon;
 
+    public GameObject GetGameObj() => _object;
+
 }
