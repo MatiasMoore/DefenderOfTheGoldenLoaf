@@ -26,11 +26,12 @@ public class HUDController : MonoBehaviour
     private void SetupElements()
     {
         _recipesContainer = _root.Q<VisualElement>("recipesContainer");
+        _pauseButton = _root.Q<Button>("pauseButton");
     }
 
     private void RegisterCallbacks()
     {
-        // Register here callbacks
+        _pauseButton.RegisterCallback<ClickEvent>(OnPauseButtonClicked);
     }
 
     private void UnregisterCallbacks()
@@ -39,12 +40,12 @@ public class HUDController : MonoBehaviour
     }
     
     // ------ Callback Handlers ------
-    private void OnPauseButtonClicked()
+    private void OnPauseButtonClicked(ClickEvent evt)
     {
-        // Some functionality
+        Debug.Log("Pause game!");
     }
 
-    // ------ Add elements to HUD
+    // ------ Add elements to HUD ------
     public void AddRecipeElement(Recipe recipe)
     { 
         // Ñîçäàíèå îáúåêòà "recipe"
@@ -86,7 +87,7 @@ public class HUDController : MonoBehaviour
         // Äîáàâëåíèå Label
         Label timer = new Label();
         timer.name = "timer";
-        timer.text = "15:01"; // ÇÄÅÑÜ ÄÎËÆÍÎ ÇÀÄÀÂÀÒÜÑß ÂĞÅÌß
+        timer.text = "15:01"; // ÇÄÅÑÜ ÄÎËÆÍÎ ÇÀÄÀÂÀÒÜÑß ÍÀ×ÀËÜÍÎÅ ÂĞÅÌß
         timer.AddToClassList("label");
         recipeElement.Add(timer);
     }

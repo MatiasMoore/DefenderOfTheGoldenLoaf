@@ -1,6 +1,10 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI%20Toolkit/USS/HUD.uss?fileID=7433441132597879392&amp;guid=1241a115b25c4f044a7a9c3c82678ad9&amp;type=3#HUD" />
+    <Style src="project://database/Assets/UI%20Toolkit/USS/MainMenu.uss?fileID=7433441132597879392&amp;guid=0228f6729196e534a8db423366be938d&amp;type=3#MainMenu" />
     <ui:VisualElement name="Container" style="flex-grow: 1; flex-direction: row;">
         <ui:VisualElement name="recipesContainer" style="flex-grow: 1; height: 280px; width: 100%; position: absolute; flex-direction: row; margin-left: 0; margin-right: 0; padding-right: 10px; padding-left: 10px;" />
+        <ui:VisualElement name="Buttons" style="flex-grow: 1; justify-content: flex-end;">
+            <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="pauseButton" enable-rich-text="true" class="pauseButton" style="align-self: flex-end; margin-bottom: 10px; margin-right: 10px; margin-top: 0; margin-left: 0; padding-left: 0; padding-bottom: 0; padding-right: 0; padding-top: 0; transition-timing-function: ease-out; transition-duration: 0s;" />
+        </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>
