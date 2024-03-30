@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: "\u0417\u043E\u043B\u043E\u0442\u043E\u0439 \u0445\u043B\u0435\u0431"
   _object: {fileID: 0}
+  _dishIcon: {fileID: 0}
   _requiredInstructions:
   - {fileID: 11400000, guid: 00de1c6fb2ecfb14c82cedb68d7ddc65, type: 2}
   - {fileID: 11400000, guid: f560e60b401873e41a61c3928ded114d, type: 2}
