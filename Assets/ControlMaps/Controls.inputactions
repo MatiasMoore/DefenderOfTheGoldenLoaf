@@ -15,6 +15,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "CursorPosition1",
+                    "type": "Value",
+                    "id": "a4f34354-cbbe-4eaf-9b3e-ffe594f2da9f",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
                     "name": "MainClick",
                     "type": "Button",
                     "id": "bc584760-cdae-4bcf-916b-cb0e7578a18d",
@@ -58,6 +67,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "AttackKick",
+                    "type": "Button",
+                    "id": "1e00f7a2-9afc-4084-ad11-801f6271251e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -225,6 +243,28 @@
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "8cc74257-ea60-43ab-8c23-cc8b0435b33b",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AttackKick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fe628973-7194-407e-a133-4cf9bbde27c1",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CursorPosition1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

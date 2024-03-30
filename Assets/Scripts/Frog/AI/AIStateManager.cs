@@ -15,7 +15,10 @@ public class AIStateManager : MonoBehaviour
     private AIStatePrimitive _currentState;
 
     [SerializeField]
-    private string _currentStateString;
+    protected string _currentStateString;
+
+    [SerializeField]
+    protected bool _isUpdate = true;
 
     private Dictionary<string, AIStatePrimitive> _states = new Dictionary<string, AIStatePrimitive>();
 
@@ -62,6 +65,11 @@ public class AIStateManager : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!_isUpdate)
+        {
+            return;
+        }
+
         _currentState.UpdateState();
     }
 

@@ -43,3 +43,30 @@
     width: 230px;
     height: 280px;
 }
+
+.pauseButton {
+    align-self: flex-end;
+    justify-content: flex-end;
+    align-items: flex-end;
+    background-image: url('project://database/Assets/Pictures/Paused_Unpressed.png?fileID=21300000&guid=387a0a0466aa5854b9a44d0a64f7d75f&type=3#Paused_Unpressed');
+    width: 200px;
+    height: 100px;
+    background-color: rgba(0, 0, 0, 0);
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in;
+}
+
+.pauseButton:active {
+    background-image: url('project://database/Assets/Pictures/Paused_Pressed.png?fileID=21300000&guid=542960b538755364c9fba447111364bd&type=3#Paused_Pressed');
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    transition-duration: 0s;
+    transition-timing-function: ease-out;
+}

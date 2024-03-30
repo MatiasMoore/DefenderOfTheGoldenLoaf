@@ -31,6 +31,7 @@ public class FrogSpawner : MonoBehaviour
         _isInit = true;
         _frogs = new List<GameObject>();
         OnEnable();
+        StartSpawning();
     }
 
     [ContextMenu("Spawn frog")]
