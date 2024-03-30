@@ -8,5 +8,7 @@ public class Player : MonoBehaviour
     {
         PlayerMovementController playerMovementController = GetComponent<PlayerMovementController>();
         playerMovementController.Init(PlayerControls.Instance);
+        PlayerKickController playerKickController = GetComponent<PlayerKickController>();
+        playerKickController.Init();
     }
 }
