@@ -44,6 +44,7 @@ public class OrderSystem : MonoBehaviour
     private void RemoveOrder(Order order) 
     {
         _orders.Remove(order);
+        Debug.Log("Removing order!");
     }
 
     private void OrderFinished(Order order)

@@ -15,14 +15,18 @@ public class RecipeTable : MonoBehaviour
     public void SetCurrentDish(Dish newDish)
     {
         _currentDish = newDish;
+        _currentDish.Finished += OnDishFinish;
     }
 
     public bool TryToAddIngredient(IngredientWithInstruction ingredient)
     {
         bool success = _currentDish.TryToAddIngredient(ingredient);
-        if (success)
-            FinishedDish?.Invoke(this, _currentDish);
-
         return success;
+    }
+
+    private void OnDishFinish()
+    {
+        FinishedDish?.Invoke(this, _currentDish);
+        var obj = Instantiate(_currentDish.GetRecipe().GetGameObj(), transform.position, Quaternion.identity, this.transform);
     }
 }
