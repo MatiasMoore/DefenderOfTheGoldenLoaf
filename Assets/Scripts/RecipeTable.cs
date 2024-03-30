@@ -6,20 +6,20 @@ using UnityEngine.Events;
 public class RecipeTable : MonoBehaviour
 {
     [SerializeField]
-    private Recipe _currentRecipe;
+    private Dish _currentDish;
 
-    private UnityAction<RecipeTable, Recipe> FinishedRecipe;
+    private UnityAction<RecipeTable, Dish> FinishedDish;
 
-    public void SetCurrentRecipe(Recipe newRecipe)
+    public void SetCurrentDish(Dish newDish)
     {
-        _currentRecipe = newRecipe;
+        _currentDish = newDish;
     }
 
-    public bool TryToAddInstruction(IngredientWithInstruction instruction)
+    public bool TryToAddIngredient(IngredientWithInstruction ingredient)
     {
-        bool success = _currentRecipe.AddFinishedIntruction(instruction);
+        bool success = _currentDish.TryToAddIngredient(ingredient);
         if (success)
-            FinishedRecipe?.Invoke(this, _currentRecipe);
+            FinishedDish?.Invoke(this, _currentDish);
 
         return success;
     }

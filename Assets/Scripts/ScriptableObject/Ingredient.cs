@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "ScriptableObjs/Ingredient")]
 public class Ingredient : ScriptableObject
 {
-    enum IngredientType
+    public enum IngredientType
     {
         gold, 
         flour,
@@ -20,4 +20,6 @@ public class Ingredient : ScriptableObject
 
     [SerializeField]
     private Sprite _icon;
+
+    public IngredientType GetIngredientType() => _type;
 }
