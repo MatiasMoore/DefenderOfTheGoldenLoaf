@@ -14,20 +14,17 @@ namespace DefenderOfTheGoldenLoaf.UI
         private void OnEnable()
         {
             _root = GetComponent<UIDocument>().rootVisualElement;
+            SetupElements();
 
-            SetupButtons();
             RegisterCallbacks();
         }
 
         private void OnDisable()
         {
-            // Unregister here callbacks
-            _playButton.UnregisterCallback<ClickEvent>(OnPlayButtonClicked);
-            _settingsButton.UnregisterCallback<ClickEvent>(OnSettingsButtonClicked);
-            _exitButton.UnregisterCallback<ClickEvent>(OnExitButtonClicked);
+            UnregisterCallbacks();
         }
 
-        private void SetupButtons()
+        private void SetupElements()
         {
             _playButton = _root.Q<Button>("playButton");
             _settingsButton = _root.Q<Button>("settingsButton");
@@ -41,6 +38,14 @@ namespace DefenderOfTheGoldenLoaf.UI
             _exitButton.RegisterCallback<ClickEvent>(OnExitButtonClicked);
         }
 
+        private void UnregisterCallbacks()
+        {
+            _playButton.UnregisterCallback<ClickEvent>(OnPlayButtonClicked);
+            _settingsButton.UnregisterCallback<ClickEvent>(OnSettingsButtonClicked);
+            _exitButton.UnregisterCallback<ClickEvent>(OnExitButtonClicked);
+        }
+
+        // ------ Callbacks Handlers ------
         private void OnPlayButtonClicked(ClickEvent evt)
         {
             Debug.Log("Play button clicked!");

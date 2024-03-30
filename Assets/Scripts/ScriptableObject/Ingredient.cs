@@ -26,4 +26,6 @@ public class Ingredient : ScriptableObject
     private Sprite _icon;
 
     public IngredientType GetIngredientType() => _type;
+
+    public Sprite GetIngredientIcon() => _icon;
 }

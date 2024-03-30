@@ -22,4 +22,6 @@ public class IngredientWithInstruction : ScriptableObject
     public Ingredient.IngredientType GetIngredientType() => _ingredient.GetIngredientType();
 
     public IngredientInstruction GetIngredientInstruction() => _instruction;
+
+    public Ingredient GetIngredient() => _ingredient;
 }
