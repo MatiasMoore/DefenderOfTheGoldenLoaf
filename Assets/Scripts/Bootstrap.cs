@@ -10,6 +10,9 @@ public class Bootstrap : MonoBehaviour
     [SerializeField]
     private Player _player;
 
+    [SerializeField]
+    private FrogSpawner _frogSpawner;
+
     private void Start()
     {
         if (_playerControls != null)
@@ -26,6 +29,14 @@ public class Bootstrap : MonoBehaviour
         } else
         {
             Debug.LogWarning("Player not found");
+        }        
+        
+        if (_frogSpawner != null)
+        {
+            _frogSpawner.Init();
+        } else
+        {
+            Debug.LogError("Frog spawner not found");
         }
 
     }
