@@ -121,7 +121,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2943846562582774144}
   - component: {fileID: 992807862357116750}
-  - component: {fileID: 1513695411124036316}
+  - component: {fileID: 3682465169277323249}
   m_Layer: 5
   m_Name: ReloadProgressBar
   m_TagString: Untagged
@@ -201,7 +201,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1513695411124036316
+--- !u!114 &3682465169277323249
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -210,12 +210,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2934976676890360226}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49086d2890c66324aa36625d42624ec6, type: 3}
+  m_Script: {fileID: 11500000, guid: 6092f289bf6aab24aaf03cc1a15b750c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _maxValue: 1
   _currenValue: 1
-  _slider: {fileID: 992807862357116750}
+  _slider: {fileID: 0}
 --- !u!1 &4445879375131142058
 GameObject:
   m_ObjectHideFlags: 0
@@ -412,7 +412,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _textField: {fileID: 1470636750105083061}
-  _reloadProgressBar: {fileID: 1513695411124036316}
+  _reloadProgressBar: {fileID: 0}
   _maxAmmo: 5
   _currentAmmo: 10
 --- !u!1 &7170650052391671178
