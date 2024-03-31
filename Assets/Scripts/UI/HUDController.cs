@@ -121,7 +121,7 @@ public class HUDController : MonoBehaviour
             ingredient.style.top = 227;
 
             Background ingredientIcon = new Background();
-            ingredientIcon.sprite = requiredIngredients[i].GetIngredient().GetIngredientIcon();
+            ingredientIcon.sprite = requiredIngredients[i].GetIcon();
             ingredient.style.backgroundImage = ingredientIcon;
             
             recipeElement.Add(ingredient);
