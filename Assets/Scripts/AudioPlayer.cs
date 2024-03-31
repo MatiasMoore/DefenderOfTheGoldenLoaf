@@ -21,7 +21,8 @@ public class AudioPlayer : MonoBehaviour
         orderFinish,
         cooking,
         pickup,
-        orderStart
+        orderStart,
+        shuffle
     }
 
     static public AudioPlayer Instance { get; private set; }
