@@ -1076,11 +1076,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4008248222260417481, guid: 93f1084c35ec2c544897c6ab1797eebb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.5070615
+      value: 4.5
       objectReference: {fileID: 0}
     - target: {fileID: 4008248222260417481, guid: 93f1084c35ec2c544897c6ab1797eebb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.9881458
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4008248222260417481, guid: 93f1084c35ec2c544897c6ab1797eebb, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1210,7 +1210,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 5
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -2181,6 +2181,10 @@ PrefabInstance:
       propertyPath: _distance
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 9211635748729274482, guid: ce6b6aa78190fca4485c731e74be8c7a, type: 3}
+      propertyPath: m_SortingOrder
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2280,11 +2284,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4008248222260417481, guid: 3f73f32d5496adc409904bea7896fbcb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.472572
+      value: 9.5
       objectReference: {fileID: 0}
     - target: {fileID: 4008248222260417481, guid: 3f73f32d5496adc409904bea7896fbcb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.002665
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4008248222260417481, guid: 3f73f32d5496adc409904bea7896fbcb, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2793,7 +2797,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 4
+  m_SortingOrder: 6
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -3183,7 +3187,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3273495950178926262, guid: 86c4d69dc81c1264f9b1c7b49236962e, type: 3}
       propertyPath: m_LocalScale.x
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3273495950178926262, guid: 86c4d69dc81c1264f9b1c7b49236962e, type: 3}
       propertyPath: m_LocalScale.y
