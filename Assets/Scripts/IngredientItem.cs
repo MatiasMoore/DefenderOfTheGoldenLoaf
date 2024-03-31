@@ -7,6 +7,9 @@ public class IngredientItem : InventoryItem
     [SerializeField]
     private IngredientWithInstruction _ingredient;
 
+    [SerializeField]
+    private Recipe _recipe;
+
     public override void Dropped()
     {
     }
@@ -22,6 +25,8 @@ public class IngredientItem : InventoryItem
     }
 
     public IngredientWithInstruction GetIngredient() => _ingredient;
+
+    public Recipe GetRecipe() => _recipe;
 
     public override bool UseAtPos(Vector2 pos)
     {
