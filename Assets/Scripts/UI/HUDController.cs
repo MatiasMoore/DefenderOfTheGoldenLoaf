@@ -71,6 +71,7 @@ public class HUDController : MonoBehaviour
 
     private void OnExitButtonClicked(ClickEvent evt)
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene(2);
     }
 
