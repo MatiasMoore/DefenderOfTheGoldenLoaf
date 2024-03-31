@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class HUDController : MonoBehaviour
@@ -8,10 +9,13 @@ public class HUDController : MonoBehaviour
     private VisualElement _root;
 
     private Button _pauseButton;
+    private Button _continueButton;
+    private Button _exitButton;
 
     private ProgressBar _levelProgressBar;
 
     private VisualElement _recipesContainer;
+    private VisualElement _pauseMenu;
 
     private void OnEnable()
     {
@@ -28,24 +32,43 @@ public class HUDController : MonoBehaviour
     private void SetupElements()
     {
         _recipesContainer = _root.Q<VisualElement>("recipesContainer");
+        _pauseMenu = _root.Q<VisualElement>("pauseMenu");
+
         _pauseButton = _root.Q<Button>("pauseButton");
+        _continueButton = _root.Q<Button>("backButton");
+        _exitButton = _root.Q<Button>("exitButton");
+
         _levelProgressBar = _root.Q<ProgressBar>("levelProgressBar");
     }
 
     private void RegisterCallbacks()
     {
         _pauseButton.RegisterCallback<ClickEvent>(OnPauseButtonClicked);
+        _continueButton.RegisterCallback<ClickEvent>(OnContinueButtonClicked);
+        _exitButton.RegisterCallback<ClickEvent>(OnExitButtonClicked);
     }
 
     private void UnregisterCallbacks()
     {
         _pauseButton.UnregisterCallback<ClickEvent>(OnPauseButtonClicked);
+        _continueButton.UnregisterCallback<ClickEvent>(OnContinueButtonClicked);
+        _exitButton.UnregisterCallback<ClickEvent>(OnExitButtonClicked);
     }
     
     // ------ Callback Handlers ------
     private void OnPauseButtonClicked(ClickEvent evt)
     {
-        Debug.Log("Pause game!");
+        _pauseMenu.style.display = DisplayStyle.Flex;
+    }
+
+    private void OnContinueButtonClicked(ClickEvent evt)
+    {
+        _pauseMenu.style.display = DisplayStyle.None;
+    }
+
+    private void OnExitButtonClicked(ClickEvent evt)
+    {
+        SceneManager.LoadScene(2);
     }
 
     // ------ Adding/Removing elements ------

@@ -108,3 +108,40 @@
     border-bottom-left-radius: 5px;
     background-color: rgb(255, 197, 121);
 }
+
+.button--pauseMenu {
+    font-size: 48px;
+    -unity-font-definition: initial;
+    -unity-font: url('project://database/Assets/Fonts/vcrosdmonorusbyd.ttf?fileID=12800000&guid=02d45b90076188f47b79dfe301da7c62&type=3#vcrosdmonorusbyd');
+    color: rgb(255, 255, 255);
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    -unity-background-scale-mode: stretch-to-fill;
+    background-image: url('project://database/Assets/Pictures/buttonIdle.png?fileID=21300000&guid=b34b42d567661f5449cef8758ea46a55&type=3#buttonIdle');
+    width: 350px;
+    height: 110px;
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+    background-color: rgba(188, 188, 188, 0);
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    transition-duration: 1s;
+    transition-timing-function: ease-out;
+}
+
+.button--pauseMenu:active {
+    background-image: url('project://database/Assets/Pictures/buttonPressed.png?fileID=2800000&guid=826d0fca7cc93644a8adf5e64226d2a6&type=3#buttonPressed');
+    transition-duration: 0s;
+    transition-timing-function: ease-out;
+}
