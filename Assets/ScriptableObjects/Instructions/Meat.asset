@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 306f6e864c6805648906552e2d4dabed, type: 3}
-  m_Name: JustCabbage
+  m_Name: Meat
   m_EditorClassIdentifier: 
-  _ingredient: {fileID: 11400000, guid: 695b146996ebd8a41af0003f44cc355b, type: 2}
+  _ingredient: {fileID: 11400000, guid: ed8e42db85a098443a6c56f204cd41d5, type: 2}
   _instruction: 0
   _instructionName: 
+  _icon: {fileID: 21300000, guid: baa977d5bec48404197e885d8a6314c4, type: 3}

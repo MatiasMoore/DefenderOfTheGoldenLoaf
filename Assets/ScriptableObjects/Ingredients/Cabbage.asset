@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bec1ce7e5938de94886c35830ee91449, type: 3}
   m_Name: Cabbage
   m_EditorClassIdentifier: 
-  _type: 3
+  _type: 2
   _name: "\u041A\u0430\u043F\u0443\u0441\u0442\u0430"
   _icon: {fileID: 21300000, guid: 56c506ee1a13fe14ea11dd2c9d12c508, type: 3}

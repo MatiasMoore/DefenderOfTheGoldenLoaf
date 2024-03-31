@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4bb75bb5761d3c04399a111dcf0b8797, type: 3}
-  m_Name: HotDog
+  m_Name: Sandwich
   m_EditorClassIdentifier: 
-  _name: "\u0425\u043E\u0442-\u0434\u043E\u0433"
-  _object: {fileID: 3112011666212605435, guid: f825ce21c55f043468d1a6b65ac32547, type: 3}
-  _dishIcon: {fileID: 21300000, guid: 8f942f4947c995a46bab10a5ddedeff1, type: 3}
+  _name: 
+  _object: {fileID: 8392174620143707839, guid: 40227862fb2e6dd419539255744b575b, type: 3}
+  _dishIcon: {fileID: 21300000, guid: 20eee2f32d1b2f54cac4724d8c9e2150, type: 3}
   _requiredInstructions:
-  - {fileID: 11400000, guid: c9547838f38831d4799e67a2e3272b20, type: 2}
+  - {fileID: 11400000, guid: cf6c8afc79de2ea4493748d9fccf7de3, type: 2}
+  - {fileID: 11400000, guid: ee618bd2d3a76444abb7de1d6e9133b8, type: 2}
   - {fileID: 11400000, guid: 77c20817a4e190e4c84e84f1e31dafab, type: 2}

@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bec1ce7e5938de94886c35830ee91449, type: 3}
-  m_Name: Meat
+  m_Script: {fileID: 11500000, guid: 306f6e864c6805648906552e2d4dabed, type: 3}
+  m_Name: Tomato
   m_EditorClassIdentifier: 
-  _type: 3
-  _name: "\u041C\u044F\u0441\u043E"
-  _icon: {fileID: 21300000, guid: baa977d5bec48404197e885d8a6314c4, type: 3}
+  _ingredient: {fileID: 11400000, guid: c828b836dcb854f498e49510bbe98079, type: 2}
+  _instruction: 0
+  _instructionName: 
+  _icon: {fileID: 21300000, guid: f78ae78e5d6365044b694bf2fce736d6, type: 3}
