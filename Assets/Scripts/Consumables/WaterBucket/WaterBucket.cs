@@ -52,6 +52,11 @@ public class WaterBucket : Consumable
             return false;
         }
 
+        if (!CanBePlaced(pos))
+        {
+            return false;
+        }
+
         Debug.Log("Water bucket used at " + pos);
 
         var slowArea = Instantiate(_slowArea, new Vector3(pos.x, pos.y, -1), Quaternion.identity);
@@ -89,4 +94,16 @@ public class WaterBucket : Consumable
         _isCooldown = false;
     }
 
+    private bool CanBePlaced(Vector2 pos)
+    {
+        var colliders = Physics2D.OverlapAreaAll(pos - _size / 2, pos + _size / 2);
+        foreach (var collider in colliders)
+        {
+            if (collider.gameObject.CompareTag("Wall"))
+            {
+                return false;
+            }
+        }
+        return true;
+    }
 }
