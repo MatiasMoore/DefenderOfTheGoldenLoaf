@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Experimental.Rendering;
 using UnityEngine.UIElements;
 
 public class HUDController : MonoBehaviour
@@ -36,7 +35,7 @@ public class HUDController : MonoBehaviour
 
     private void UnregisterCallbacks()
     {
-        // Unregister here callbacks
+        _pauseButton.UnregisterCallback<ClickEvent>(OnPauseButtonClicked);
     }
     
     // ------ Callback Handlers ------
@@ -45,7 +44,7 @@ public class HUDController : MonoBehaviour
         Debug.Log("Pause game!");
     }
 
-    // ------ Add elements to HUD ------
+    // ------ Adding/Removing elements ------
     public VisualElement AddRecipeElement(Recipe recipe)
     { 
         // Создание объекта "recipe"
@@ -87,7 +86,7 @@ public class HUDController : MonoBehaviour
         // Добавление Label
         Label timer = new Label();
         timer.name = "timer";
-        timer.text = "15:01"; // ЗДЕСЬ ДОЛЖНО ЗАДАВАТЬСЯ НАЧАЛЬНОЕ ВРЕМЯ
+        timer.text = "placeholder";
         timer.AddToClassList("label");
         recipeElement.Add(timer);
 
