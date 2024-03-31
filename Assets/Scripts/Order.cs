@@ -10,10 +10,20 @@ public class Order
 
     private VisualElement _visualElem;
 
-    public Order(Recipe recipe, VisualElement elem)
+    private float _timeToFinish;
+
+    public Order(Recipe recipe, VisualElement elem, float timeToFinish)
     {
         _recipe = recipe;
         _visualElem = elem;
+        _timeToFinish = timeToFinish;
+    }
+
+    public float GetTimeLeftToFinish() => _timeToFinish;
+
+    public void ReduceTimeLeftBy(float delta)
+    {
+        _timeToFinish = Mathf.Clamp(_timeToFinish - delta, 0, float.MaxValue);
     }
 
     public Recipe GetRecipe() => _recipe;
