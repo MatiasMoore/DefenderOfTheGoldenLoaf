@@ -188,6 +188,11 @@ MonoBehaviour:
   _stamina: {fileID: 3107311869575379482}
   _staminaCost: 15
   _arrowHolder: {fileID: 7000103197212123267}
+  _wallMask:
+    serializedVersion: 2
+    m_Bits: 0
+  _dot: 0.2
+  _distance: 1
 --- !u!114 &8829340478874423180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,7 +222,7 @@ MonoBehaviour:
   _staminaPerCycle: 20
   _currentStamina: 0
   _infiniteCycles: 1
-  _cycleDuration: 0.1
+  _cycleDuration: 0.3
   _staminaDelay: 1
   _stabinaBar: {fileID: 5485214111188491436}
 --- !u!1 &1108193114731538241
@@ -417,7 +422,7 @@ Transform:
   m_GameObject: {fileID: 5219900033599047756}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 0, z: 0}
+  m_LocalPosition: {x: 1, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
