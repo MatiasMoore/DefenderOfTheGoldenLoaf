@@ -32,11 +32,22 @@ public class OrderSystem : MonoBehaviour
     private void Awake()
     {
         CheckoutTable.CheckedOutRecipe += CheckedOutRecipe;
+        MenuItem.MenuDestroyed += ShuffleMenu;
     }
 
     private void Start()
     {
         CreateOrdersOneByOne(_ordersToWin, _timeBetweenOrders);
+    }
+
+    [ContextMenu("Shuffle")]
+    private void ShuffleMenu()
+    {
+        Debug.Log("Shuffling");
+        ClearOrders();
+        _finishedOrderCount = 0;
+        StopAllCoroutines();
+        CreateOrdersOneByOne(_ordersToWin - _finishedOrderCount, _timeBetweenOrders);
     }
 
     private void CreateOrdersOneByOne(int count, float delayBetween)

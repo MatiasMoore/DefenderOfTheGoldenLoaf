@@ -122,6 +122,7 @@ public class Inventory : MonoBehaviour
         if (_currentItem == null)
             return;
         Debug.Log($"Destroy item {_currentItem.gameObject.name}");
+        _currentItem.WillBeDestroyed();
         Destroy(_currentItem.gameObject);
         _currentItem = null;
     }

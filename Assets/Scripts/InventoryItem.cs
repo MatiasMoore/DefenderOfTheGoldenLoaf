@@ -18,4 +18,6 @@ abstract public class InventoryItem : MonoBehaviour
     abstract public void PickedUp();
 
     abstract public void Dropped();
+
+    abstract public void WillBeDestroyed();
 }
