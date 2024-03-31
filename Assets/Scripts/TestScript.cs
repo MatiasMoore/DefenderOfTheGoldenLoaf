@@ -13,7 +13,6 @@ public class TestScript : MonoBehaviour
 
     private void Start()
     {
-        controller.AddRecipeElement(firstRecipe);
-        controller.AddRecipeElement(secondRecipe);
+        controller.SetWinPanelActivity(true);
     }
 }
