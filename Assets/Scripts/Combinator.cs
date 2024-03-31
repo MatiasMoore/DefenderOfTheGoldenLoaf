@@ -192,4 +192,8 @@ public class Combinator : InventoryItem
         _item.OnPickedUp -= Clear;
         _item = null;
     }
+
+    public override void WillBeDestroyed()
+    {
+    }
 }

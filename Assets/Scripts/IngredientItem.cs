@@ -44,4 +44,8 @@ public class IngredientItem : InventoryItem
 
         return false;
     }
+
+    public override void WillBeDestroyed()
+    {
+    }
 }

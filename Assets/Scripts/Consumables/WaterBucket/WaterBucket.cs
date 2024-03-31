@@ -106,4 +106,8 @@ public class WaterBucket : Consumable
         }
         return true;
     }
+
+    public override void WillBeDestroyed()
+    {
+    }
 }
