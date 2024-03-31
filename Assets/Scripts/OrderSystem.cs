@@ -148,6 +148,7 @@ public class OrderSystem : MonoBehaviour
         Debug.Log("You lost!");
         StopAllCoroutines();
         ClearOrders();
+        _controller.SetLosePanelActivity(true);
     }
 
     private void WinGame()
@@ -155,5 +156,6 @@ public class OrderSystem : MonoBehaviour
         Debug.Log("You won!");
         StopAllCoroutines();
         ClearOrders();
+        _controller.SetWinPanelActivity(true);
     }
 }
