@@ -40,7 +40,6 @@ public class AmmoBar : MonoBehaviour
     {
         string ammoText = _currentAmmo + " / " + _maxAmmo;
         _textField.text = ammoText;
-        UpdateReloadTime(_currentAmmo, _maxAmmo);
     }
 
     public void UpdateReloadTime(float currentReloadTime, float maxReloadTime)

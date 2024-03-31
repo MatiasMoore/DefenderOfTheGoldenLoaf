@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14acd8f853b6b4644b8f91e32d763f33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _capacityNumbers: {fileID: 6647061384086506172}
   _spawn: {fileID: 4518702520686095441}
   _itemToCreate: {fileID: 0}
   _maxCapacity: 10
@@ -301,3 +302,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6822194799820587499, guid: 3f77307c774b40f42b6d05c6f48c455f, type: 3}
   m_PrefabInstance: {fileID: 1258438192095084643}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6647061384086506172 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5569199852126833375, guid: 3f77307c774b40f42b6d05c6f48c455f, type: 3}
+  m_PrefabInstance: {fileID: 1258438192095084643}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d09e885ed59e694791ddb0c6ae711e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
