@@ -5,6 +5,9 @@ using UnityEngine;
 public class ItemStorage : MonoBehaviour
 {
     [SerializeField]
+    private AmmoBar _capacityNumbers;
+
+    [SerializeField]
     private Transform _spawn;
 
     [SerializeField]
@@ -42,6 +45,8 @@ public class ItemStorage : MonoBehaviour
             _currentItems--;
             Instantiate(_itemToCreate, this.transform.position + new Vector3(0, 0, -1), Quaternion.identity, _spawn);
         }
+
+        _capacityNumbers.UpdateAmmo(_currentItems + _spawn.childCount,  _maxCapacity);
     }
 
     public void StartCreating()
@@ -85,6 +90,7 @@ public class ItemStorage : MonoBehaviour
                 time = 0;
             }
 
+            _capacityNumbers.UpdateReloadTime(time, _cycleDuration);
             time += Time.deltaTime;
             yield return null;
         }
