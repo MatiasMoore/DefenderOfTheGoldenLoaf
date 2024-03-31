@@ -35,7 +35,7 @@ public class HUDController : MonoBehaviour
         _pauseMenu = _root.Q<VisualElement>("pauseMenu");
 
         _pauseButton = _root.Q<Button>("pauseButton");
-        _continueButton = _root.Q<Button>("backButton");
+        _continueButton = _root.Q<Button>("continueButton");
         _exitButton = _root.Q<Button>("exitButton");
 
         _levelProgressBar = _root.Q<ProgressBar>("levelProgressBar");
