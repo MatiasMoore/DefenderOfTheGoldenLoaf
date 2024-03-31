@@ -2,22 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IngredientStorage : MonoBehaviour
+public class ItemStorage : MonoBehaviour
 {
     [SerializeField]
     private Transform _spawn;
 
     [SerializeField]
-    private GameObject _ingredientToCreate;
+    private GameObject _itemToCreate;
 
     [SerializeField]
     private int _maxCapacity = 10;
 
     [SerializeField]
-    private int _ingredientsPerCycle = 2;
+    private int _itemsPerCycle = 2;
 
     [SerializeField]
-    private int _currentIngredients = 0;
+    private int _currentItems = 0;
 
     [SerializeField]
     private int _cycleCountLimit = 10;
@@ -37,10 +37,10 @@ public class IngredientStorage : MonoBehaviour
 
     private void Update()
     {
-        if (_spawn.childCount == 0 && _currentIngredients > 0)
+        if (_spawn.childCount == 0 && _currentItems > 0)
         {
-            _currentIngredients--;
-            Instantiate(_ingredientToCreate, this.transform.position + new Vector3(0, 0, -1), Quaternion.identity, _spawn);
+            _currentItems--;
+            Instantiate(_itemToCreate, this.transform.position + new Vector3(0, 0, -1), Quaternion.identity, _spawn);
         }
     }
 
@@ -59,9 +59,9 @@ public class IngredientStorage : MonoBehaviour
 
     public bool IsCreating() => _isCreating;
 
-    public int GetIngredientsPerCycle() => _ingredientsPerCycle;
+    public int GetIngredientsPerCycle() => _itemsPerCycle;
 
-    public void SetIngredientsPerCycle(int newAmount) => _ingredientsPerCycle = newAmount;
+    public void SetIngredientsPerCycle(int newAmount) => _itemsPerCycle = newAmount;
 
     public float GetCycleDuration() => _cycleDuration;
 
@@ -73,12 +73,12 @@ public class IngredientStorage : MonoBehaviour
         int cyclesFinished = 0;
         while (_infiniteCycles || cyclesFinished < _cycleCountLimit)
         {
-            if (_currentIngredients >= _maxCapacity)
+            if (_currentItems >= _maxCapacity)
                 yield return null;
 
             if (time >= _cycleDuration)
             {
-                _currentIngredients = Mathf.Clamp(_currentIngredients + _ingredientsPerCycle, 0, _maxCapacity);
+                _currentItems = Mathf.Clamp(_currentItems + _itemsPerCycle, 0, _maxCapacity);
                 cyclesFinished++;
                 time = 0;
             }

@@ -1803,6 +1803,10 @@ PrefabInstance:
       value: Meat Storage
       objectReference: {fileID: 0}
     - target: {fileID: 4944876423551893496, guid: 43a297a7038db03459eaaaba0c826de9, type: 3}
+      propertyPath: _itemToCreate
+      value: 
+      objectReference: {fileID: 2479178640365231240, guid: 76024b6b64811a74b88e6ea7b73ab6a6, type: 3}
+    - target: {fileID: 4944876423551893496, guid: 43a297a7038db03459eaaaba0c826de9, type: 3}
       propertyPath: _ingredientToCreate
       value: 
       objectReference: {fileID: 2479178640365231240, guid: 76024b6b64811a74b88e6ea7b73ab6a6, type: 3}
@@ -2309,6 +2313,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bread Storage
       objectReference: {fileID: 0}
+    - target: {fileID: 4944876423551893496, guid: 43a297a7038db03459eaaaba0c826de9, type: 3}
+      propertyPath: _itemToCreate
+      value: 
+      objectReference: {fileID: 2479178640365231240, guid: 5a5451da9bb9fcd41b2c30a73b90578d, type: 3}
     - target: {fileID: 4944876423551893496, guid: 43a297a7038db03459eaaaba0c826de9, type: 3}
       propertyPath: _ingredientToCreate
       value: 
@@ -5198,6 +5206,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cabbage Storage
       objectReference: {fileID: 0}
+    - target: {fileID: 4944876423551893496, guid: 43a297a7038db03459eaaaba0c826de9, type: 3}
+      propertyPath: _itemToCreate
+      value: 
+      objectReference: {fileID: 2479178640365231240, guid: 02f84c26ec6e78346a1baf09169d2806, type: 3}
     - target: {fileID: 4944876423551893496, guid: 43a297a7038db03459eaaaba0c826de9, type: 3}
       propertyPath: _ingredientToCreate
       value: 
