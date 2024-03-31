@@ -56,18 +56,22 @@ public class PlayerKickController : MonoBehaviour
 
         _playerAnimator.SetTrigger("Kick");
         _smokeAnimator.SetTrigger("Kick");
-        Debug.Log($"Kick to {direction}");
+        //Debug.Log($"Kick to {direction}");
         
         
         ContactFilter2D contactFilter = new ContactFilter2D();
         contactFilter.layerMask = _frogMask;
-        
-        var colliders = Physics2D.OverlapAreaAll(_kickArea.bounds.center - _kickArea.bounds.size / 2, _kickArea.bounds.center + _kickArea.bounds.size / 2, _frogMask,0);
+        contactFilter.useLayerMask = true;
+
+        //var colliders = Physics2D.OverlapAreaAll(_kickArea.bounds.center - _kickArea.bounds.size / 2, _kickArea.bounds.center + _kickArea.bounds.size / 2, _frogMask,0);
+        //List<Collider2D> colliders = new List<Collider2D>();
+        //var count = Physics2D.OverlapCollider(_kickArea, contactFilter, colliders);
         _isCooldown = true;
         StartCoroutine(Cooldown());
 
 
-        foreach (var collider in colliders)
+        //count = Physics2D.OverlapCollider(_kickArea, contactFilter, colliders);
+        foreach (var collider in GetFrogsInKickArea())
         {
             Debug.Log($"Kick to {collider.gameObject.name}");
             Push(collider);
@@ -82,7 +86,7 @@ public class PlayerKickController : MonoBehaviour
         yield break;
     }
 
-    private void Push(Collider2D collider)
+    private void Push(GameObject collider)
     {
 
         MovingAIStateManager movingAIStateManager = collider.GetComponent<MovingAIStateManager>();
@@ -107,5 +111,54 @@ public class PlayerKickController : MonoBehaviour
         desiredQuat *= Quaternion.AngleAxis(-90, Vector3.up);
 
         gameObj.transform.rotation = desiredQuat;
+    }
+
+    private List<GameObject> GetAllFrogs()
+    {
+       
+        List<GameObject> frogs = new List<GameObject>();
+        foreach (var frog in GameObject.FindGameObjectsWithTag("Frog"))
+        {
+            frogs.Add(frog);
+        }
+        return frogs;
+        
+    }
+
+    public LayerMask _wallMask;
+    private bool CanSeeFrog(GameObject frog)
+    {
+        //wall between player and frog
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, frog.transform.position - transform.position, Vector2.Distance(transform.position, frog.transform.position), _wallMask);
+        return hit.collider == null;
+    }
+
+    public float _dot;
+    public float _distance;
+
+    private List<GameObject> GetFrogsInKickArea()
+    {
+        
+        List<GameObject> frogs = new List<GameObject>();
+        Vector2 watchDirection = PlayerControls.Instance.getTouchWorldPosition2d() - (Vector2)transform.position;
+        foreach (var frog in GetAllFrogs())
+        {
+            Vector2 toFrog = frog.transform.position - transform.position;
+            float dot = Vector2.Dot(toFrog.normalized, watchDirection.normalized);
+            float distance = toFrog.magnitude;
+            if (dot > _dot && distance < _distance)
+            {
+                if (CanSeeFrog(frog))
+                {
+                    frogs.Add(frog);
+                }          
+            }             
+        }
+        return frogs;
+    }
+
+    private void OnDrawGizmos()
+    {
+        DebugDraw.DrawSphere(transform.position, _distance, Color.red);
     }
 }

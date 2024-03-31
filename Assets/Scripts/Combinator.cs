@@ -41,7 +41,17 @@ public class Combinator : InventoryItem
         OnPickedUp?.Invoke();
     }
 
-    public Recipe GetFinishedRecipe() => _finishedRecipe;
+    public Recipe GetFinishedRecipe()
+    {
+        if (_attach.childCount == 1)
+        {
+            if (_attach.GetChild(0).TryGetComponent<IngredientItem>(out IngredientItem item))
+            {
+                return item.GetRecipe();
+            }
+        }
+        return null;
+    }
 
     public bool IsFinished() => _finishedRecipe != null;
 

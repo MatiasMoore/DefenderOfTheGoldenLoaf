@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GoldenLoaf
   m_EditorClassIdentifier: 
   _name: "\u0417\u043E\u043B\u043E\u0442\u043E\u0439 \u0445\u043B\u0435\u0431"
-  _object: {fileID: 8392174620143707839, guid: bc0d8926b678b7a4f95544890bb52c9d, type: 3}
+  _object: {fileID: 2479178640365231240, guid: 347547159bfba5f46bc5b2db6a59f714, type: 3}
   _dishIcon: {fileID: 21300000, guid: 674a3174a715ef540ae2ece4e4247e98, type: 3}
   _requiredInstructions:
   - {fileID: 11400000, guid: cf6c8afc79de2ea4493748d9fccf7de3, type: 2}

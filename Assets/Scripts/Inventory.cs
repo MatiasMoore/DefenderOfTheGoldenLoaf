@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 
 public class Inventory : MonoBehaviour
 {
     [SerializeField]
     private Transform _holdAttach;
+
+    [SerializeField]
+    private float _maxInteractDistance = 4;
 
     private InventoryItem _currentItem;
 
@@ -44,12 +48,47 @@ public class Inventory : MonoBehaviour
 
     private void UseItemAtPos(Vector2 pos)
     {
+        if (Vector2.Distance(pos, (Vector2)transform.position) > _maxInteractDistance)
+            return;
+
         _currentItem.UseAtPos(pos);
     }
 
     public void PickupItemAtPos(Vector2 pos)
     {
-        var collider = Physics2D.OverlapPoint(pos, 1 << LayerMask.NameToLayer("Pickup") | 1 << LayerMask.NameToLayer("Plate"));
+        if (Vector2.Distance(pos, (Vector2)transform.position) > _maxInteractDistance)
+            return;
+
+        bool success = PickupPlate(pos);
+        if (!success)
+        {
+            PickupAnyPickup(pos);
+        }
+    }
+
+    private bool PickupPlate(Vector2 pos)
+    {
+        var collider = Physics2D.OverlapPoint(pos, 1 << LayerMask.NameToLayer("Plate"));
+        if (collider != null && collider.TryGetComponent<InventoryItem>(out InventoryItem newItem))
+        {
+            if (!(newItem is Plate))
+                return false;
+
+            _currentItem = newItem;
+            _currentItem.transform.parent = _holdAttach;
+            _currentItem.transform.localPosition = _currentItem.GetAttachOffset();
+            _currentItem.Destroyed += DestroyItem;
+            _currentItem.ForgetAbout += ForgetItem;
+            _currentItem.PickedUp();
+            return true;
+        }
+
+        return false;
+    }
+
+    private bool PickupAnyPickup(Vector2 pos)
+    {
+        var collider = Physics2D.OverlapPoint(pos, 1 << LayerMask.NameToLayer("Pickup"));
         if (collider != null && collider.TryGetComponent<InventoryItem>(out InventoryItem newItem))
         {
             _currentItem = newItem;
@@ -58,7 +97,10 @@ public class Inventory : MonoBehaviour
             _currentItem.Destroyed += DestroyItem;
             _currentItem.ForgetAbout += ForgetItem;
             _currentItem.PickedUp();
+            return true;
         }
+
+        return false;
     }
 
     public void DropItem()
