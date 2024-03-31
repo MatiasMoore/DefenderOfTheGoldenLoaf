@@ -6,8 +6,6 @@ using UnityEngine.UIElements;
 
 public class Order
 {
-    public static UnityAction<Order> OrderFinished;
-
     private Recipe _recipe;
 
     private VisualElement _visualElem;
@@ -21,9 +19,4 @@ public class Order
     public Recipe GetRecipe() => _recipe;
 
     public VisualElement GetVisualElement() => _visualElem;
-
-    public void FinishOrder()
-    {
-        OrderFinished?.Invoke(this);
-    }
 }

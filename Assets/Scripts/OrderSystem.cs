@@ -11,9 +11,6 @@ public class OrderSystem : MonoBehaviour
     [SerializeField]
     private List<Recipe> _recipes;
 
-    //[SerializeField]
-    //private List<Plate> _tables;
-
     [SerializeField]
     private HUDController _controller;
 
@@ -24,7 +21,20 @@ public class OrderSystem : MonoBehaviour
 
     private void Awake()
     {
-        Order.OrderFinished += OrderFinished;
+        CheckoutTable.CheckedOutRecipe += CheckedOutRecipe;
+    }
+
+    private void CheckedOutRecipe(CheckoutTable table, Recipe recipe)
+    {
+        foreach (var order in _orders)
+        {
+            if (order.GetRecipe() == recipe)
+            {
+                table.ClearAndDeletePlate();
+                FinishOrder(order);
+                return;
+            }
+        }
     }
 
     [ContextMenu("Create Order")]
@@ -52,7 +62,7 @@ public class OrderSystem : MonoBehaviour
         _controller.RemoveRecipeElement(order.GetVisualElement());
     }
 
-    private void OrderFinished(Order order)
+    private void FinishOrder(Order order)
     {
         Debug.Log("Removing order!");
         RemoveOrder(order);
