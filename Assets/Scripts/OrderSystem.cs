@@ -115,7 +115,7 @@ public class OrderSystem : MonoBehaviour
 
     private void UpdateProgressBar()
     {
-        float progress = _finishedOrderCount / _ordersToWin;
+        float progress = (float)_finishedOrderCount / (float)_ordersToWin;
         _controller.ChangeLevelProgressBarValue(progress);
     }
 

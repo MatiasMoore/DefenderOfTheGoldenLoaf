@@ -50,7 +50,10 @@ MonoBehaviour:
   _recipes:
   - {fileID: 11400000, guid: 534847ce0fd2ef24e92b0eff599e1679, type: 2}
   - {fileID: 11400000, guid: 3910fc27ccce592408a365bd948dd850, type: 2}
+  - {fileID: 11400000, guid: 80ca3be9e23a6444890551962224817d, type: 2}
+  _maxIngredientCount: 3
   _failedRecipe: {fileID: 11400000, guid: 062fbb9959c0fe94e94b3dacf410e62c, type: 2}
+  _delay: 0
 --- !u!50 &8812581256087692653
 Rigidbody2D:
   serializedVersion: 4

@@ -16,5 +16,5 @@ MonoBehaviour:
   _object: {fileID: 3112011666212605435, guid: f825ce21c55f043468d1a6b65ac32547, type: 3}
   _dishIcon: {fileID: 21300000, guid: 8f942f4947c995a46bab10a5ddedeff1, type: 3}
   _requiredInstructions:
-  - {fileID: 11400000, guid: ff298d56a9120534a98ce446b2a42f9d, type: 2}
-  - {fileID: 11400000, guid: 8d1cef008adf89b4d99582786c79a4f8, type: 2}
+  - {fileID: 11400000, guid: c9547838f38831d4799e67a2e3272b20, type: 2}
+  - {fileID: 11400000, guid: 77c20817a4e190e4c84e84f1e31dafab, type: 2}

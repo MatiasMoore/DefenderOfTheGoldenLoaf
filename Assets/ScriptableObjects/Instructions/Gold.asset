@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 306f6e864c6805648906552e2d4dabed, type: 3}
-  m_Name: BakedGold
+  m_Name: Gold
   m_EditorClassIdentifier: 
   _ingredient: {fileID: 11400000, guid: ecb9f20bca5aec7419808f0b389bec99, type: 2}
-  _instruction: 1
-  _instructionName: "\u0417\u0430\u043F\u0435\u0447\u044C"
+  _instruction: 0
+  _instructionName: 
+  _icon: {fileID: 21300000, guid: c35f15919015ecc41a1b7d9b7fd051bf, type: 3}

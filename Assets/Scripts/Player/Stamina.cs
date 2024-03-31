@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Stamina : MonoBehaviour
 {
+    public event UnityAction<int> StaminaChanged;
+
     [SerializeField]
     private int _maxStamina = 100;
 
@@ -25,14 +28,17 @@ public class Stamina : MonoBehaviour
     private bool _isCreating = false;
     private bool _isStaminaDelay = false;
 
+    [SerializeField]
+
+    private AmmoBar _stabinaBar;
     private void Start()
     {
         StartCreating();
+        StaminaChanged += UpdateStamina;
     }
-
-    private void Update()
+    private void UpdateStamina(int stamina)
     {
-        
+        _stabinaBar.UpdateAmmo(_currentStamina, _maxStamina);
     }
 
     public int GetCurrentStamina() => _currentStamina;
@@ -46,6 +52,7 @@ public class Stamina : MonoBehaviour
             _currentStamina -= amount;
             _isStaminaDelay = true;
             StartCoroutine(StaminaDelay());
+            StaminaChanged?.Invoke(_currentStamina);
             return true;
         }
         return false;
@@ -91,6 +98,7 @@ public class Stamina : MonoBehaviour
             if (time >= _cycleDuration)
             {
                 _currentStamina = Mathf.Clamp(_currentStamina + _staminaPerCycle, 0, _maxStamina);
+                StaminaChanged?.Invoke(_currentStamina);
                 cyclesFinished++;
                 time = 0;
             }
