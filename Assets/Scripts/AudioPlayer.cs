@@ -20,7 +20,8 @@ public class AudioPlayer : MonoBehaviour
         lose,
         orderFinish,
         cooking,
-        pickup
+        pickup,
+        orderStart
     }
 
     static public AudioPlayer Instance { get; private set; }
