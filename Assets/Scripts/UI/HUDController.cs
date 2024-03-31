@@ -11,14 +11,19 @@ public class HUDController : MonoBehaviour
     private Button _pauseButton;
     private Button _pauseMenuContinueButton;
     private Button _explanationPanelInPauseMenuButton;
-    private Button _exitButton;
+    private Button _exitPauseMenuButton;
     private Button _explanationPanelContinueButton;
+    private Button _exitWinPanelButton;
+    private Button _tryAgainButton;
+    private Button _exitLosePanelButton;
 
     private ProgressBar _levelProgressBar;
 
     private VisualElement _recipesContainer;
     private VisualElement _pauseMenu;
     private VisualElement _explanationPanel;
+    private VisualElement _winPanel;
+    private VisualElement _losePanel;
 
     private void OnEnable()
     {
@@ -37,12 +42,17 @@ public class HUDController : MonoBehaviour
         _recipesContainer = _root.Q<VisualElement>("recipesContainer");
         _pauseMenu = _root.Q<VisualElement>("pauseMenu");
         _explanationPanel = _root.Q<VisualElement>("explanationPanel");
+        _winPanel = _root.Q<VisualElement>("winPanel");
+        _losePanel = _root.Q<VisualElement>("losePanel");
 
         _pauseButton = _root.Q<Button>("pauseButton");
         _pauseMenuContinueButton = _pauseMenu.Q<Button>("continueButton");
         _explanationPanelInPauseMenuButton = _pauseMenu.Q<Button>("explanationButton");
-        _exitButton = _root.Q<Button>("exitButton");
+        _exitPauseMenuButton = _pauseMenu.Q<Button>("exitButton");
         _explanationPanelContinueButton = _explanationPanel.Q<Button>("continueButton");
+        _exitWinPanelButton = _winPanel.Q<Button>("exitButton");
+        _tryAgainButton = _losePanel.Q<Button>("tryAgainButton");
+        _exitLosePanelButton = _losePanel.Q<Button>("exitButton");
 
         _levelProgressBar = _root.Q<ProgressBar>("levelProgressBar");
     }
@@ -53,7 +63,10 @@ public class HUDController : MonoBehaviour
         _pauseMenuContinueButton.RegisterCallback<ClickEvent>(OnPauseMenuContinueButtonClicked);
         _explanationPanelContinueButton.RegisterCallback<ClickEvent>(OnExplanationPanelContinueButtonClicked);
         _explanationPanelInPauseMenuButton.RegisterCallback<ClickEvent>(OnExplanationPanelOpenButtonClicked);
-        _exitButton.RegisterCallback<ClickEvent>(OnExitButtonClicked);
+        _exitPauseMenuButton.RegisterCallback<ClickEvent>(OnExitButtonClicked);
+        _exitWinPanelButton.RegisterCallback<ClickEvent>(OnExitButtonClicked);
+        _tryAgainButton.RegisterCallback<ClickEvent>(OnTryAgainButtonClicked);
+        _exitLosePanelButton.RegisterCallback<ClickEvent>(OnExitButtonClicked);
     }
 
     private void UnregisterCallbacks()
@@ -62,9 +75,12 @@ public class HUDController : MonoBehaviour
         _pauseMenuContinueButton.UnregisterCallback<ClickEvent>(OnPauseMenuContinueButtonClicked);
         _explanationPanelContinueButton.UnregisterCallback<ClickEvent>(OnExplanationPanelContinueButtonClicked);
         _explanationPanelInPauseMenuButton.UnregisterCallback<ClickEvent>(OnExplanationPanelOpenButtonClicked);
-        _exitButton.UnregisterCallback<ClickEvent>(OnExitButtonClicked);
+        _exitPauseMenuButton.UnregisterCallback<ClickEvent>(OnExitButtonClicked);
+        _exitWinPanelButton.UnregisterCallback<ClickEvent>(OnExitButtonClicked);
+        _tryAgainButton.UnregisterCallback<ClickEvent>(OnTryAgainButtonClicked);
+        _exitLosePanelButton.UnregisterCallback<ClickEvent>(OnExitButtonClicked);
     }
-    
+
     // ------ Callback Handlers ------
     private void OnPauseButtonClicked(ClickEvent evt)
     {
@@ -81,7 +97,7 @@ public class HUDController : MonoBehaviour
 
     private void OnExplanationPanelContinueButtonClicked(ClickEvent evt)
     {
-        if(_pauseMenu.style.display != DisplayStyle.Flex)
+        if (_pauseMenu.style.display != DisplayStyle.Flex)
         {
             Time.timeScale = 1;
         }
@@ -96,19 +112,24 @@ public class HUDController : MonoBehaviour
     private void OnExitButtonClicked(ClickEvent evt)
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene(2);
+        SceneManager.LoadSceneAsync(2);
+    }
+
+    private void OnTryAgainButtonClicked(ClickEvent evt)
+    {
+        Time.timeScale = 0;
+        SceneManager.LoadSceneAsync(1);
     }
 
     // ------ Adding/Removing elements ------
     public VisualElement AddRecipeElement(Recipe recipe)
-    { 
+    {
         // Создание объекта "recipe"
         VisualElement recipeElement = new VisualElement();
         recipeElement.name = "recipe";
         recipeElement.style.marginRight = 5;
         recipeElement.AddToClassList("order");
         _recipesContainer.Add(recipeElement);
-        Debug.Log("ADDED");
 
         // Заполнение ингредиентов объекта "recipe"
         List<IngredientWithInstruction> requiredIngredients = recipe.GetRequiredIngredients();
@@ -123,7 +144,7 @@ public class HUDController : MonoBehaviour
             Background ingredientIcon = new Background();
             ingredientIcon.sprite = requiredIngredients[i].GetIcon();
             ingredient.style.backgroundImage = ingredientIcon;
-            
+
             recipeElement.Add(ingredient);
         }
 
@@ -156,5 +177,31 @@ public class HUDController : MonoBehaviour
     public void ChangeLevelProgressBarValue(float value)
     {
         _levelProgressBar.value = value;
+    }
+
+    public void SetWinPanelActivity(bool isActive)
+    {
+        Time.timeScale = 0;
+
+        if(isActive)
+        {
+            _winPanel.style.display = DisplayStyle.Flex;
+            return;
+        }
+        
+        _winPanel.style.display = DisplayStyle.None;
+    }
+
+    public void SetLosePanelActivity(bool isActive)
+    {
+        Time.timeScale = 0;
+
+        if (isActive)
+        {
+            _losePanel.style.display = DisplayStyle.Flex;
+            return;
+        }
+
+        _losePanel.style.display = DisplayStyle.None;
     }
 }
