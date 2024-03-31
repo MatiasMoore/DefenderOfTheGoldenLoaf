@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: FailedRecipe
   m_EditorClassIdentifier: 
   _name: "\u0418\u0441\u043F\u043E\u0440\u0447\u0435\u043D\u043D\u044B\u0439 \u0440\u0435\u0446\u0435\u043F\u0442"
-  _object: {fileID: 8392174620143707839, guid: c78072a5fb069ae459fc6f93da246744, type: 3}
+  _object: {fileID: 2479178640365231240, guid: 711219b816997234d9585c8172b00e3d, type: 3}
   _dishIcon: {fileID: 0}
   _requiredInstructions: []
