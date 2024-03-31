@@ -27,7 +27,12 @@ public class Plate : InventoryItem
 
     public override void PickedUp()
     {
+        OnPickedUp?.Invoke();
     }
+
+    public Recipe GetFinishedRecipe() => _finishedRecipe;
+
+    public bool IsFinished() => _finishedRecipe != null;
 
     public bool TryToAddIngredient(IngredientWithInstruction ingredient)
     {
@@ -41,6 +46,16 @@ public class Plate : InventoryItem
 
     public override bool UseAtPos(Vector2 pos)
     {
+        var collider = Physics2D.OverlapPoint(pos, 1 << LayerMask.NameToLayer("Checkout"));
+        if (collider != null && collider.TryGetComponent<CheckoutTable>(out CheckoutTable table))
+        {
+            if (table.IsFree())
+            {
+                ForgetAbout?.Invoke();
+                table.SetPlateOnTable(this);
+                return true;
+            }
+        }
         return false;
     }
 

@@ -56,6 +56,7 @@ public class Inventory : MonoBehaviour
             _currentItem.transform.parent = _holdAttach;
             _currentItem.transform.localPosition = _currentItem.GetAttachOffset();
             _currentItem.Destroyed += DestroyItem;
+            _currentItem.ForgetAbout += ForgetItem;
             _currentItem.PickedUp();
         }
     }
@@ -69,9 +70,13 @@ public class Inventory : MonoBehaviour
         _currentItem = null;
     }
 
+    public void ForgetItem()
+    {
+        _currentItem = null;
+    }
+
     public void DestroyItem()
     {
-        
         if (_currentItem == null)
             return;
         Debug.Log($"Destroy item {_currentItem.gameObject.name}");

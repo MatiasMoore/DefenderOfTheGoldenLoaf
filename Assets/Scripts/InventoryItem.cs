@@ -7,6 +7,10 @@ abstract public class InventoryItem : MonoBehaviour
 {
     public UnityAction Destroyed;
 
+    public UnityAction ForgetAbout;
+
+    public UnityAction OnPickedUp;
+
     abstract public bool UseAtPos(Vector2 pos);
 
     abstract public Vector3 GetAttachOffset();
