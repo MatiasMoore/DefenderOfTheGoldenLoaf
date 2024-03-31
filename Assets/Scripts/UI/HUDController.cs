@@ -58,11 +58,14 @@ public class HUDController : MonoBehaviour
     // ------ Callback Handlers ------
     private void OnPauseButtonClicked(ClickEvent evt)
     {
+        Time.timeScale = 0;
         _pauseMenu.style.display = DisplayStyle.Flex;
+
     }
 
     private void OnContinueButtonClicked(ClickEvent evt)
     {
+        Time.timeScale = 1;
         _pauseMenu.style.display = DisplayStyle.None;
     }
 
