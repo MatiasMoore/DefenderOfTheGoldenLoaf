@@ -215,7 +215,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxValue: 1
   _currenValue: 1
-  _slider: {fileID: 0}
+  _slider: {fileID: 992807862357116750}
 --- !u!1 &4445879375131142058
 GameObject:
   m_ObjectHideFlags: 0
@@ -412,7 +412,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _textField: {fileID: 1470636750105083061}
-  _reloadProgressBar: {fileID: 0}
+  _reloadProgressBar: {fileID: 3682465169277323249}
   _maxAmmo: 5
   _currentAmmo: 10
 --- !u!1 &7170650052391671178
