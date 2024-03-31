@@ -47,12 +47,12 @@ public class Plate : InventoryItem
     public override bool UseAtPos(Vector2 pos)
     {
         var collider = Physics2D.OverlapPoint(pos, 1 << LayerMask.NameToLayer("Checkout"));
-        if (collider != null && collider.TryGetComponent<CheckoutTable>(out CheckoutTable table))
+        if (collider != null && collider.TryGetComponent<TablePrimitive>(out TablePrimitive table))
         {
             if (table.IsFree())
             {
                 ForgetAbout?.Invoke();
-                table.SetPlateOnTable(this);
+                table.SetItemOnTable(this);
                 return true;
             }
         }
