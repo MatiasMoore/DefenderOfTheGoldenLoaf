@@ -127,7 +127,7 @@ public class HUDController : MonoBehaviour
         // Создание объекта "recipe"
         VisualElement recipeElement = new VisualElement();
         recipeElement.name = "recipe";
-        recipeElement.style.marginRight = 5;
+        recipeElement.style.marginBottom = 30;
         recipeElement.AddToClassList("order");
         _recipesContainer.Add(recipeElement);
 
