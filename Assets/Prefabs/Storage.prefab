@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6923385917950850824}
   - component: {fileID: 4944876423551893496}
+  - component: {fileID: 2314178775009559300}
   m_Layer: 0
   m_Name: Storage
   m_TagString: Untagged
@@ -32,7 +33,7 @@ Transform:
   m_Children:
   - {fileID: 4518702520686095441}
   - {fileID: 7673232403676540813}
-  - {fileID: 4721239486726086215}
+  - {fileID: 5754352206758150536}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4944876423551893496
@@ -55,6 +56,22 @@ MonoBehaviour:
   _cycleCountLimit: 10
   _infiniteCycles: 1
   _cycleDuration: 2
+--- !u!114 &2314178775009559300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2318741689212725690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d09e885ed59e694791ddb0c6ae711e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _textField: {fileID: 0}
+  _reloadProgressBar: {fileID: 0}
+  _maxAmmo: 0
+  _currentAmmo: 0
 --- !u!1 &4226456730898537194
 GameObject:
   m_ObjectHideFlags: 0
@@ -170,7 +187,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1001 &2245176677058076588
+--- !u!1001 &1258438192095084643
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -178,6 +195,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6923385917950850824}
     m_Modifications:
+    - target: {fileID: 368622130017459982, guid: 3f77307c774b40f42b6d05c6f48c455f, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2491640787300615557, guid: 3f77307c774b40f42b6d05c6f48c455f, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2491640787300615557, guid: 3f77307c774b40f42b6d05c6f48c455f, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5805075203098148658, guid: 3f77307c774b40f42b6d05c6f48c455f, type: 3}
       propertyPath: m_Name
       value: AmmoBar
@@ -244,11 +273,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6822194799820587499, guid: 3f77307c774b40f42b6d05c6f48c455f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.008
+      value: -0.12
       objectReference: {fileID: 0}
     - target: {fileID: 6822194799820587499, guid: 3f77307c774b40f42b6d05c6f48c455f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.351
+      value: -0.32
       objectReference: {fileID: 0}
     - target: {fileID: 6822194799820587499, guid: 3f77307c774b40f42b6d05c6f48c455f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -267,8 +296,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f77307c774b40f42b6d05c6f48c455f, type: 3}
---- !u!224 &4721239486726086215 stripped
+--- !u!224 &5754352206758150536 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6822194799820587499, guid: 3f77307c774b40f42b6d05c6f48c455f, type: 3}
-  m_PrefabInstance: {fileID: 2245176677058076588}
+  m_PrefabInstance: {fileID: 1258438192095084643}
   m_PrefabAsset: {fileID: 0}
