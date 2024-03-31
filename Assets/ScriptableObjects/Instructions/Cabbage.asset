@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bec1ce7e5938de94886c35830ee91449, type: 3}
-  m_Name: Meat
+  m_Script: {fileID: 11500000, guid: 306f6e864c6805648906552e2d4dabed, type: 3}
+  m_Name: Cabbage
   m_EditorClassIdentifier: 
-  _type: 3
-  _name: "\u041C\u044F\u0441\u043E"
-  _icon: {fileID: 21300000, guid: baa977d5bec48404197e885d8a6314c4, type: 3}
+  _ingredient: {fileID: 11400000, guid: 695b146996ebd8a41af0003f44cc355b, type: 2}
+  _instruction: 0
+  _instructionName: 
+  _icon: {fileID: 21300000, guid: 56c506ee1a13fe14ea11dd2c9d12c508, type: 3}

@@ -9,11 +9,13 @@ public class Ingredient : ScriptableObject
     {
         gold, 
         flour,
-        eggs,
         cabbage,
         meat,
         tomato,
-        bread
+        bread,
+        breadSlice,
+        loaf,
+        hotDogBread
     }
 
     [SerializeField] 
