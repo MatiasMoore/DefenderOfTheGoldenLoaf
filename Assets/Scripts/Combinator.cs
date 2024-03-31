@@ -9,6 +9,9 @@ public class Combinator : InventoryItem
     private List<Recipe> _recipes;
 
     [SerializeField]
+    private int _maxIngredientCount = 3;
+
+    [SerializeField]
     private Recipe _failedRecipe;
 
     [SerializeField]
@@ -92,7 +95,7 @@ public class Combinator : InventoryItem
             }
         }
 
-        if (_addedIngredients.Count >= 3)
+        if (_addedIngredients.Count >= _maxIngredientCount)
         {
             FinishRecipe(_failedRecipe);
             return;
