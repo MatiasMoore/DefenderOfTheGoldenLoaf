@@ -186,6 +186,10 @@ public class ObjectMovement : MonoBehaviour
         return _changeDirectionTime;
     }
 
+    public Vector2 GetVelocity()
+    {
+        return _rigidbody.velocity;
+    }
     public float GetCurrentSpeed()
     {
         return _rigidbody.velocity.magnitude;

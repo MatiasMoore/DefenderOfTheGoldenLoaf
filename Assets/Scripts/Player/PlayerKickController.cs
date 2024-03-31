@@ -15,6 +15,8 @@ public class PlayerKickController : MonoBehaviour
     private LayerMask _frogMask;
     [SerializeField]
     private float _pushTime;
+    [SerializeField]
+    private Animator _animator;
     
     public void Init()
     {
@@ -23,6 +25,7 @@ public class PlayerKickController : MonoBehaviour
 
     private void Kick(Vector2 direction)
     {
+        _animator.SetTrigger("Kick");
         Debug.Log($"Kick to {direction}");
         RotateKickAreaTo(direction);
         
