@@ -52,7 +52,7 @@ public class EscapeFrogState : MovingAiPrimitive
     {
         _timer.Tick();
 
-        if (Vector3.Distance(GetMovingStateManager().movingAIStateParam.escapeTarget.position, GetMovingStateManager().movingAIStateParam.objectMovement.transform.position) < 1f)
+        if (Vector2.Distance(GetMovingStateManager().movingAIStateParam.escapeTarget.position, GetMovingStateManager().movingAIStateParam.objectMovement.transform.position) < 1f)
         {
             GetMovingStateManager().ChooseNewTarget();
             GetMovingStateManager().Escaped();
