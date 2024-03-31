@@ -10,11 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4bb75bb5761d3c04399a111dcf0b8797, type: 3}
-  m_Name: HotDog
+  m_Name: ChoppedTomato
   m_EditorClassIdentifier: 
-  _name: "\u0425\u043E\u0442-\u0434\u043E\u0433"
-  _object: {fileID: 3112011666212605435, guid: f825ce21c55f043468d1a6b65ac32547, type: 3}
-  _dishIcon: {fileID: 21300000, guid: 8f942f4947c995a46bab10a5ddedeff1, type: 3}
+  _name: 
+  _object: {fileID: 0}
+  _dishIcon: {fileID: 21300000, guid: c440d36583035da4597f9fc17cc22335, type: 3}
   _requiredInstructions:
-  - {fileID: 11400000, guid: c9547838f38831d4799e67a2e3272b20, type: 2}
-  - {fileID: 11400000, guid: 77c20817a4e190e4c84e84f1e31dafab, type: 2}
+  - {fileID: 11400000, guid: 0e7acad1c3cc5ef45ba42c7ae589886a, type: 2}
