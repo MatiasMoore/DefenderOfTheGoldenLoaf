@@ -73,8 +73,10 @@ public class ItemStorage : MonoBehaviour
         int cyclesFinished = 0;
         while (_infiniteCycles || cyclesFinished < _cycleCountLimit)
         {
-            if (_currentItems >= _maxCapacity)
+            while (_currentItems + _spawn.childCount >= _maxCapacity)
+            {
                 yield return null;
+            }
 
             if (time >= _cycleDuration)
             {
