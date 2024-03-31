@@ -4,7 +4,8 @@
     <ui:VisualElement name="Container" style="flex-grow: 1; flex-direction: row;">
         <ui:VisualElement name="recipesContainer" style="flex-grow: 1; height: 1080px; width: 327px; position: absolute; flex-direction: column; margin-left: 0; margin-right: 0; padding-right: 10px; padding-left: 10px;" />
         <ui:ProgressBar value="0" name="levelProgressBar" high-value="1" style="position: relative; left: 0; top: 0; width: 100%; height: 100%; align-items: center; justify-content: flex-end; align-self: center; margin-bottom: 20px; margin-top: 0; margin-right: 0; margin-left: 0;" />
-        <ui:VisualElement name="Buttons" style="flex-grow: 1; justify-content: flex-end; position: relative; width: 100%; height: 100%; align-self: flex-end;">
+        <ui:VisualElement name="Buttons" style="flex-grow: 1; justify-content: flex-end; position: relative; width: 100%; height: 100%; align-self: center; flex-wrap: nowrap; align-items: flex-end;">
+            <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="recipeBookButton" enable-rich-text="true" class="pauseButton recipeBookButton" style="align-self: flex-end; margin-bottom: 10px; margin-right: 10px; margin-top: 0; margin-left: 0; padding-left: 0; padding-bottom: 0; padding-right: 0; padding-top: 0; transition-timing-function: ease-out; transition-duration: 0s; border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0; width: 200px; left: 0; top: 0; right: 0; bottom: 0; position: relative;" />
             <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="pauseButton" enable-rich-text="true" class="pauseButton" style="align-self: flex-end; margin-bottom: 10px; margin-right: 10px; margin-top: 0; margin-left: 0; padding-left: 0; padding-bottom: 0; padding-right: 0; padding-top: 0; transition-timing-function: ease-out; transition-duration: 0s; border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0;" />
         </ui:VisualElement>
         <ui:VisualElement name="pauseMenu" style="flex-grow: 1; position: absolute; width: 100%; height: 100%; display: none; transition-duration: 0s;">
@@ -40,6 +41,16 @@
                 <ui:Button text="Повторить" parse-escape-sequences="true" display-tooltip-when-elided="true" name="tryAgainButton" class="button--pauseMenu" style="align-self: center; font-size: 48px; margin-bottom: 10px;" />
                 <ui:Button text="В меню" parse-escape-sequences="true" display-tooltip-when-elided="true" name="exitButton" class="button--pauseMenu" style="align-self: center; font-size: 48px;" />
             </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="recipeBook" style="flex-grow: 1; position: absolute; width: 100%; height: 100%; display: none; opacity: 1;">
+            <ui:VisualElement name="bgFade" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0.2); position: absolute; width: 100%; height: 100%; display: flex;" />
+            <ui:VisualElement name="recipeBookBackground" style="flex-grow: 1; width: 1366px; max-height: 80%; min-height: 30%; align-self: center; top: 10%; background-image: url(&apos;project://database/Assets/Pictures/book.png?fileID=21300000&amp;guid=b642e2b73f9afb24d8227d2422b5cc0f&amp;type=3#book&apos;); border-top-left-radius: 0; border-top-right-radius: 0; border-bottom-right-radius: 0; border-bottom-left-radius: 0; border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0; align-items: center; justify-content: flex-start; flex-direction: row;">
+                <ui:VisualElement name="leftPage" class="leftPage" />
+                <ui:VisualElement name="rightPage" class="rightPartOfPage rightPage" />
+            </ui:VisualElement>
+            <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="prevButton" class="recipeBookPrevButton" style="top: 812px; left: 332px;" />
+            <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="closeButton" class="recipeBookCloseButton" style="top: 142px; left: 1497px;" />
+            <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="nextButton" class="recipeBookNextButton" style="top: 810px; left: 1478px;" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

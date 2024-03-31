@@ -50,7 +50,7 @@ namespace DefenderOfTheGoldenLoaf.UI
         private void OnPlayButtonClicked(ClickEvent evt)
         {
             Time.timeScale = 0;
-            SceneManager.LoadScene(1);
+            SceneManager.LoadSceneAsync(1);
         }
 
         private void OnSettingsButtonClicked(ClickEvent evt)
