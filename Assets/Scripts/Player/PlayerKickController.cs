@@ -16,7 +16,10 @@ public class PlayerKickController : MonoBehaviour
     [SerializeField]
     private float _pushTime;
     [SerializeField]
-    private Animator _animator;
+    private Animator _playerAnimator;
+    [SerializeField]
+    private Animator _smokeAnimator;
+
     
     public void Init()
     {
@@ -25,9 +28,12 @@ public class PlayerKickController : MonoBehaviour
 
     private void Kick(Vector2 direction)
     {
-        _animator.SetTrigger("Kick");
-        Debug.Log($"Kick to {direction}");
         RotateKickAreaTo(direction);
+
+        _playerAnimator.SetTrigger("Kick");
+        _smokeAnimator.SetTrigger("Kick");
+        Debug.Log($"Kick to {direction}");
+        
         
         ContactFilter2D contactFilter = new ContactFilter2D();
         contactFilter.layerMask = _frogMask;
