@@ -152,6 +152,7 @@ public class OrderSystem : MonoBehaviour
         StopAllCoroutines();
         ClearOrders();
         _controller.SetLosePanelActivity(true);
+        AudioPlayer.Instance.PlaySFX(AudioPlayer.SFX.lose);
     }
 
     private void WinGame()
@@ -160,5 +161,6 @@ public class OrderSystem : MonoBehaviour
         StopAllCoroutines();
         ClearOrders();
         _controller.SetWinPanelActivity(true);
+        AudioPlayer.Instance.PlaySFX(AudioPlayer.SFX.win);
     }
 }

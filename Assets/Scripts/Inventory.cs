@@ -62,8 +62,10 @@ public class Inventory : MonoBehaviour
         bool success = PickupPlate(pos);
         if (!success)
         {
-            PickupAnyPickup(pos);
+            success = PickupAnyPickup(pos);
         }
+        if (success)
+            AudioPlayer.Instance.PlaySFX(AudioPlayer.SFX.pickup);
     }
 
     private bool PickupPlate(Vector2 pos)
@@ -110,6 +112,7 @@ public class Inventory : MonoBehaviour
         _currentItem.transform.parent = null;
         _currentItem.Dropped();
         _currentItem = null;
+        AudioPlayer.Instance.PlaySFX(AudioPlayer.SFX.pickup);
     }
 
     public void ForgetItem()

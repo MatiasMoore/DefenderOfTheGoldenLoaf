@@ -10,6 +10,12 @@ public class Combinator : InventoryItem
     private AmmoBar _progressBar;
 
     [SerializeField]
+    private AudioPlayer.SFX _audioSFX;
+
+    [SerializeField]
+    private bool _playAudio = false;
+
+    [SerializeField]
     private Sprite _inactiveSprite;
 
     [SerializeField]
@@ -152,6 +158,9 @@ public class Combinator : InventoryItem
         {
             Destroy(_attach.GetChild(i).gameObject);
         }
+
+        if (_playAudio)
+            AudioPlayer.Instance.PlaySFX(_audioSFX);
 
         float time = 0;
         while (time < delay)

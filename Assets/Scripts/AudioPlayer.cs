@@ -13,7 +13,14 @@ public class AudioPlayer : MonoBehaviour
     public enum SFX
     {
         testSFX,
-        CoinPickup
+        cuttingBoard,
+        frog,
+        kick,
+        win,
+        lose,
+        orderFinish,
+        cooking,
+        pickup
     }
 
     static public AudioPlayer Instance { get; private set; }
