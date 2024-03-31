@@ -12,6 +12,15 @@ public class EscapeFrogState : MovingAiPrimitive
     private float _jumpTime = 0.4f;
 
     private Timer _timer;
+
+    [SerializeField]
+    private Animator _animator;
+
+    private string _isJump = "isJump";
+    private string _velX = "velX";
+    private string _velY = "velY";
+    private string _jumptimeAnimator = "jumpTime";
+
     private enum JumpState
     {
         Jumping,
@@ -31,9 +40,7 @@ public class EscapeFrogState : MovingAiPrimitive
     public override void StartState()
     {
         _timer = new Timer(_jumpTime);
-        _state = JumpState.Jumping;
-        _timer.OnTimerDone += StopJump;
-        _timer.StartTimer();
+        StartJump();
     }
 
     public override void Stop()
@@ -62,7 +69,6 @@ public class EscapeFrogState : MovingAiPrimitive
                 break;
         }
     }
-
     private void StartJump()
     {
         _timer.OnTimerDone -= StartJump;
@@ -70,6 +76,9 @@ public class EscapeFrogState : MovingAiPrimitive
         _timer = new Timer(_jumpTime);
         _timer.StartTimer();
         _timer.OnTimerDone += StopJump;
+        _animator.SetBool(_isJump, true);
+        _animator.SetFloat(_jumptimeAnimator, _jumpTime);
+
 
     }
 
@@ -80,11 +89,15 @@ public class EscapeFrogState : MovingAiPrimitive
         _timer = new Timer(_jumpCooldown);
         _timer.StartTimer();
         _timer.OnTimerDone += StartJump;
+        _animator.SetBool(_isJump, false);
+
     }
 
     private void Jumping()
     {
         GetMovingStateManager().movingAIStateParam.objectMovement.GoToPointOnNavMesh(GetMovingStateManager().movingAIStateParam.escapeTarget.position);
+        _animator.SetFloat(_velX, GetMovingStateManager().movingAIStateParam.objectMovement.GetVelocity().x);
+        _animator.SetFloat(_velY, GetMovingStateManager().movingAIStateParam.objectMovement.GetVelocity().y);
     }
 
     private void NotJumping()
