@@ -460,7 +460,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d706847a55a8afc4597efb2396467b31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _minDistanceToTarget: 1
+  _minDistanceToTarget: 1.5
   _jumpCooldown: 1
   _jumpTime: 0.4
   _animator: {fileID: 8662305745582853520}
@@ -508,7 +508,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65bf3eada32597841a575a3a3bdc2a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _minDistanceToTarget: 1
+  _minDistanceToTarget: 1.5
   _jumpCooldown: 1
   _jumpTime: 0.4
   _animator: {fileID: 8662305745582853520}
