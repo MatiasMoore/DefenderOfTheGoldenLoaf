@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3182973488663459894}
   - component: {fileID: 2015350645587645195}
   m_Layer: 8
-  m_Name: Gold
+  m_Name: FailedDish
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13366e5d181a0d6458bd51b9a2044e67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _ingredient: {fileID: 11400000, guid: 35477363b60de8f4e8691a7ac324fc56, type: 2}
+  _ingredient: {fileID: 11400000, guid: 37e9c9ef8fe61294b89f01429722efe4, type: 2}
 --- !u!50 &3182973488663459894
 Rigidbody2D:
   serializedVersion: 4
@@ -193,7 +193,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 4
-  m_Sprite: {fileID: 21300000, guid: c35f15919015ecc41a1b7d9b7fd051bf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: eef5136ea323b174485b63f12afd1d94, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

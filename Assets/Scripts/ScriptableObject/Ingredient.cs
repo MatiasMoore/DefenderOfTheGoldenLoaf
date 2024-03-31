@@ -15,7 +15,8 @@ public class Ingredient : ScriptableObject
         bread,
         breadSlice,
         loaf,
-        hotDogBread
+        hotDogBread,
+        trash
     }
 
     [SerializeField] 
