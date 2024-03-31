@@ -9814,7 +9814,7 @@ PrefabInstance:
       objectReference: {fileID: 2051623889651025661, guid: d9736fdcdc9ddc24a9c29ec1505af682, type: 3}
     - target: {fileID: 4944876423551893496, guid: 43a297a7038db03459eaaaba0c826de9, type: 3}
       propertyPath: _cycleDuration
-      value: 2
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4944876423551893496, guid: 43a297a7038db03459eaaaba0c826de9, type: 3}
       propertyPath: _itemsPerCycle
