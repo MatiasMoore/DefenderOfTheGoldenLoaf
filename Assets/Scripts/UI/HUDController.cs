@@ -8,8 +8,9 @@ using UnityEngine.UIElements;
 public class HUDController : MonoBehaviour
 {
     [SerializeField] private List<Recipe> _recipes;
-    private Dictionary<int, VisualElement[]> _pagesWithRecipes;
+    private Dictionary<int, VisualElement[]> _pagesWithRecipes = new Dictionary<int, VisualElement[]>();
     private int _currentPageNumber;
+    private int _pagesNumber;
 
     private VisualElement _root;
 
@@ -118,7 +119,11 @@ public class HUDController : MonoBehaviour
         FillRecipeBookWithRecipes();
         _recipeBook.style.display = DisplayStyle.Flex;
         _currentPageNumber = 0;
-        VisualElement[] 
+        _pagesNumber -= 1;
+        VisualElement[] page = _pagesWithRecipes[_currentPageNumber];
+
+        page[0].style.display = DisplayStyle.Flex;
+        page[1].style.display = DisplayStyle.Flex;
     }
 
     private void OnRecipeBookCloseButtonClicked(ClickEvent evt)
@@ -161,12 +166,52 @@ public class HUDController : MonoBehaviour
 
     private void OnPrevPageButtonClicked(ClickEvent evt)
     {
-        // NOT IMPLEMENTED
+        if (_currentPageNumber <= 0)
+        {
+            _currentPageNumber = 0;
+        }
+
+        if (_currentPageNumber > 0 )
+        {
+            _currentPageNumber -= 1;
+        }
+        else
+        {
+            _currentPageNumber = 0;
+        }
+
+        VisualElement[] page = _pagesWithRecipes[_currentPageNumber + 1];
+        page[0].style.display = DisplayStyle.None;
+        page[1].style.display = DisplayStyle.None;
+
+        page = _pagesWithRecipes[_currentPageNumber];
+        page[0].style.display = DisplayStyle.Flex;
+        page[1].style.display = DisplayStyle.Flex;
     }
 
     private void OnNextPageButtonClicked(ClickEvent evt)
     {
-        // NOT IMPLEMENTED
+        if (_currentPageNumber > _pagesNumber)
+        {
+            _currentPageNumber = _pagesNumber;
+        }
+
+        if (_currentPageNumber < _pagesNumber)
+        {
+            _currentPageNumber += 1;
+        }
+        else
+        {
+            _currentPageNumber = _pagesNumber;
+        }
+
+        VisualElement[] page = _pagesWithRecipes[_currentPageNumber - 1];
+        page[0].style.display = DisplayStyle.None;
+        page[1].style.display = DisplayStyle.None;
+
+        page = _pagesWithRecipes[_currentPageNumber];
+        page[0].style.display = DisplayStyle.Flex;
+        page[1].style.display = DisplayStyle.Flex;
     }
 
     // ------ Elements functions ------
@@ -210,7 +255,7 @@ public class HUDController : MonoBehaviour
         // Добавление Label
         Label timer = new Label();
         timer.name = "timer";
-        timer.text = "placeholder";
+        timer.text = "";
         timer.AddToClassList("label");
         recipeElement.Add(timer);
 
@@ -255,11 +300,10 @@ public class HUDController : MonoBehaviour
 
     private void FillRecipeBookWithRecipes()
     {
-        int amountOfRecipesPages = (int)Math.Ceiling((double)_recipes.Count / 4);
+        _pagesNumber = (int)Math.Ceiling((double)_recipes.Count / 4);
 
-        for(int i = 0; i < amountOfRecipesPages; i++)
+        for(int i = 0; i < _pagesNumber; i++)
         {
-            _currentPageNumber = i;
             VisualElement leftPart = new VisualElement();
             VisualElement rightPart = new VisualElement();
             _recipeBook.Q<VisualElement>("recipeBookBackground").Add(leftPart);
@@ -267,16 +311,22 @@ public class HUDController : MonoBehaviour
             leftPart.AddToClassList("leftPart");
             rightPart.AddToClassList("rightPart");
 
+            leftPart.style.top = 25;
+            leftPart.style.left = 200;
+            rightPart.style.top = 25;
+            rightPart.style.left = 650;
+
             leftPart.style.display = DisplayStyle.None;
             rightPart.style.display = DisplayStyle.None;
             VisualElement[] page = { leftPart, rightPart };
 
             SetupPageWithRecipes(i, leftPart, rightPart);
 
-            _pagesWithRecipes.Add(_currentPageNumber, page);
+            if(!_pagesWithRecipes.ContainsKey(i))
+            {
+                _pagesWithRecipes.Add(i, page);
+            }
         }
-
-        _currentPageNumber = 0;
     }
 
     private void SetupPageWithRecipes(int currentPageIndex, VisualElement leftPart, VisualElement rightPart)
