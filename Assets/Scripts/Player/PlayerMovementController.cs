@@ -14,6 +14,9 @@ public class PlayerMovementController : MonoBehaviour
     [SerializeField]
     private Animator _animator;
 
+    [SerializeField]
+    private Animator _handAnimator;
+
     private const string _moveSpeed = "MoveSpeed";
     private const string _velX = "velX";
     private const string _velY = "velY";
@@ -32,10 +35,15 @@ public class PlayerMovementController : MonoBehaviour
         {   
             _animator.SetFloat(_velX, _objectMovement.GetVelocity().x);
             _animator.SetFloat(_velY, _objectMovement.GetVelocity().y);
+            _handAnimator.SetFloat(_velY, _objectMovement.GetVelocity().y);
+            _handAnimator.SetFloat(_velX, _objectMovement.GetVelocity().x);
+
             if (PlayerControls.Movement != Vector2.zero)
             {
                 _animator.SetFloat(_oldDirX, PlayerControls.Movement.x);
                 _animator.SetFloat(_oldDirY, PlayerControls.Movement.y);
+                _handAnimator.SetFloat(_oldDirX, PlayerControls.Movement.x);
+                _handAnimator.SetFloat(_oldDirY, PlayerControls.Movement.y);
             }
             _animator.SetFloat(_velY, PlayerControls.Movement.y);
             _objectMovement.SetDirection(new Vector2(PlayerControls.Movement.x, PlayerControls.Movement.y));

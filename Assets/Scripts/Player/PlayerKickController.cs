@@ -29,6 +29,8 @@ public class PlayerKickController : MonoBehaviour
     private int _staminaCost;
     [SerializeField]
     private GameObject _arrowHolder;
+    [SerializeField]
+    private Animator _handAnimator;
  
     public void Init()
     {
@@ -56,9 +58,10 @@ public class PlayerKickController : MonoBehaviour
 
         _playerAnimator.SetTrigger("Kick");
         _smokeAnimator.SetTrigger("Kick");
+        _handAnimator.SetTrigger("Kick");
         //Debug.Log($"Kick to {direction}");
-        
-        
+
+
         ContactFilter2D contactFilter = new ContactFilter2D();
         contactFilter.layerMask = _frogMask;
         contactFilter.useLayerMask = true;

@@ -119,10 +119,13 @@ public class OrderSystem : MonoBehaviour
         _controller.ChangeLevelProgressBarValue(progress);
     }
 
+    public GameObject _watterbucket;
+    public Transform _spawnPos;
     private void FinishOrder(Order order)
     {
         RemoveOrder(order);
         _finishedOrderCount++;
+        Instantiate(_watterbucket, _spawnPos.position, Quaternion.identity);
         UpdateProgressBar();
         if (_finishedOrderCount == _ordersToWin)
             WinGame();

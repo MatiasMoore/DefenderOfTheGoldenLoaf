@@ -384,6 +384,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _holdAttach: {fileID: 8630568493055959450}
+  _maxInteractDistance: 4
 --- !u!1 &6835887972935047435
 GameObject:
   m_ObjectHideFlags: 0
@@ -507,7 +508,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65bf3eada32597841a575a3a3bdc2a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _minDistanceToTarget: 2
+  _minDistanceToTarget: 1
   _jumpCooldown: 1
   _jumpTime: 0.4
   _animator: {fileID: 8662305745582853520}

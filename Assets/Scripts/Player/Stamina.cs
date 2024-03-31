@@ -38,7 +38,7 @@ public class Stamina : MonoBehaviour
     }
     private void UpdateStamina(int stamina)
     {
-        _stabinaBar.UpdateAmmo(_currentStamina, _maxStamina);
+        _stabinaBar.UpdateReloadTime(_currentStamina, _maxStamina);
     }
 
     public int GetCurrentStamina() => _currentStamina;

@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _ingredient: {fileID: 11400000, guid: 37e9c9ef8fe61294b89f01429722efe4, type: 2}
+  _recipe: {fileID: 0}
 --- !u!50 &3182973488663459894
 Rigidbody2D:
   serializedVersion: 4
