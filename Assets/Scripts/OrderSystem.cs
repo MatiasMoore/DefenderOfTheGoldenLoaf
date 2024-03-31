@@ -13,6 +13,9 @@ public class OrderSystem : MonoBehaviour
     [SerializeField]
     private HUDController _controller;
 
+    [SerializeField]
+    private GameObject _recipeTimerPrefab;
+
     private List<Order> _orders = new ();
 
     private void Awake()
@@ -29,6 +32,7 @@ public class OrderSystem : MonoBehaviour
             {
                 var dish = new Dish(_recipes[Random.Range(0, _recipes.Count)]);
                 var elem = _controller.AddRecipeElement(dish.GetRecipe());
+                Instantiate(_recipeTimerPrefab).GetComponent<RecipeTimer>().SetupObject(elem, 3f); // ÇÄÅÑÜ ÄÎËÆÍÎ ÇÀÄÀÂÀÒÜÑß ÂĞÅÌß ÍÀ ÏĞÈÃÎÒÎÂËÅÍÈÅ
                 var order = new Order(dish, table, elem);
                 AddOrder(order);
                 table.SetCurrentDish(dish);
