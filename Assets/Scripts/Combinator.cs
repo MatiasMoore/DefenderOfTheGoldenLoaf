@@ -1,10 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class Combinator : InventoryItem
 {
+    [SerializeField]
+    private Transform _attach;
+
     [SerializeField]
     private List<Recipe> _recipes;
 
@@ -19,7 +23,6 @@ public class Combinator : InventoryItem
 
     private InventoryItem _item;
     private Coroutine _finishing = null;
-    private List<IngredientWithInstruction> _addedIngredients = new();
     private Recipe _finishedRecipe = null;
 
     private UnityAction<Combinator, Recipe> FinishedRecipe;
@@ -42,12 +45,12 @@ public class Combinator : InventoryItem
 
     public bool IsFinished() => _finishedRecipe != null;
 
-    public bool TryToAddIngredient(IngredientWithInstruction ingredient)
+    public bool TryToAddIngredient(IngredientItem ingredientItem)
     {
         if (_finishedRecipe != null && _finishing != null)
             return false;
 
-        AddIngredient(ingredient);
+        AddIngredient(ingredientItem);
 
         return true;
     }
@@ -67,25 +70,33 @@ public class Combinator : InventoryItem
         return false;
     }
 
-    private void AddIngredient(IngredientWithInstruction ingredient)
+    private void AddIngredient(IngredientItem ingredientItem)
     {
-        _addedIngredients.Add(ingredient);
+        ingredientItem.transform.parent = _attach;
+        ingredientItem.transform.localPosition = Vector3.zero;
         CheckIfDishIsReady();
     }
 
     private void CheckIfDishIsReady()
     {
+        var ingredientItems = _attach.GetComponentsInChildren<IngredientItem>().ToList();
+        var addedIngredients = new List<IngredientWithInstruction>();
+        foreach (var item in  ingredientItems)
+        {
+            addedIngredients.Add(item.GetIngredient());
+        }
+
         foreach (var recipe in _recipes)
         {
             var required = recipe.GetRequiredIngredients();
-            if (required.Count != _addedIngredients.Count)
+            if (required.Count != addedIngredients.Count)
                 continue;
 
             bool allMatch = true;
             for (int i = 0; i < required.Count; i++)
             {
                 var reqIngredient = required[i];
-                var addedIngredient = _addedIngredients[i];
+                var addedIngredient = addedIngredients[i];
                 if (!reqIngredient.IsEquivalentTo(addedIngredient))
                     allMatch = false;
             }
@@ -96,7 +107,7 @@ public class Combinator : InventoryItem
             }
         }
 
-        if (_addedIngredients.Count >= _maxIngredientCount)
+        if (addedIngredients.Count >= _maxIngredientCount)
         {
             FinishRecipe(_failedRecipe);
             return;
@@ -119,7 +130,11 @@ public class Combinator : InventoryItem
 
         _finishedRecipe = recipe;
         FinishedRecipe?.Invoke(this, _finishedRecipe);
-        var obj = Instantiate(_finishedRecipe.GetGameObj(), transform.position, Quaternion.identity, this.transform);
+        for (int i = 0; i < _attach.childCount; i++)
+        {
+            Destroy(_attach.GetChild(i).gameObject);
+        }
+        var obj = Instantiate(_finishedRecipe.GetGameObj(), transform.position, Quaternion.identity, _attach);
         if (obj.TryGetComponent<InventoryItem>(out InventoryItem item))
         {
             _item = item;
@@ -130,7 +145,6 @@ public class Combinator : InventoryItem
 
     private void Clear()
     {
-        _addedIngredients = new List<IngredientWithInstruction>();
         _finishedRecipe = null;
         _item.OnPickedUp -= Clear;
         _item = null;
