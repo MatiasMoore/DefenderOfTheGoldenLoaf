@@ -60,7 +60,7 @@ namespace DefenderOfTheGoldenLoaf.UI
 
         private void OnExitButtonClicked(ClickEvent evt)
         {
-            Debug.Log("Exit button clicked!");
+            Application.Quit();
         }
     }
 }
