@@ -6,32 +6,17 @@ using UnityEngine.UIElements;
 
 public class Order
 {
-    public static UnityAction<Order> OrderFinished;
-
-    private Dish _dish;
-
-    private RecipeTable _recipeTable;
+    private Recipe _recipe;
 
     private VisualElement _visualElem;
 
-    public Order(Dish dish, RecipeTable recipeTable, VisualElement elem)
+    public Order(Recipe recipe, VisualElement elem)
     {
-        _dish = dish;
-        _recipeTable = recipeTable;
+        _recipe = recipe;
         _visualElem = elem;
-        _dish.Finished += FinishOrder;
     }
 
-    public Dish GetDish() => _dish;
+    public Recipe GetRecipe() => _recipe;
 
     public VisualElement GetVisualElement() => _visualElem;
-
-    public Recipe GetRecipe() => _dish.GetRecipe();
-
-    public RecipeTable GetRecipeTable() => _recipeTable;
-
-    private void FinishOrder()
-    {
-        OrderFinished?.Invoke(this);
-    }
 }

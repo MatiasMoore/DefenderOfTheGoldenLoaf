@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4618517419285922120}
   - component: {fileID: 3182973488663459894}
   - component: {fileID: 2015350645587645195}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cabbage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -130,7 +130,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6568126830362849193}
   - component: {fileID: 8928341743982717375}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}

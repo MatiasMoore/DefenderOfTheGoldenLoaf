@@ -24,4 +24,10 @@ public class IngredientWithInstruction : ScriptableObject
     public IngredientInstruction GetIngredientInstruction() => _instruction;
 
     public Ingredient GetIngredient() => _ingredient;
+
+    public bool IsEquivalentTo(IngredientWithInstruction other)
+    {
+        return this.GetIngredientType() == other.GetIngredientType() 
+            && this.GetIngredientInstruction() == other.GetIngredientInstruction();
+    }
 }

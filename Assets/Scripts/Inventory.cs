@@ -49,13 +49,14 @@ public class Inventory : MonoBehaviour
 
     public void PickupItemAtPos(Vector2 pos)
     {
-        var collider = Physics2D.OverlapPoint(pos);
+        var collider = Physics2D.OverlapPoint(pos, 1 << LayerMask.NameToLayer("Pickup") | 1 << LayerMask.NameToLayer("Plate"));
         if (collider != null && collider.TryGetComponent<InventoryItem>(out InventoryItem newItem))
         {
             _currentItem = newItem;
             _currentItem.transform.parent = _holdAttach;
             _currentItem.transform.localPosition = _currentItem.GetAttachOffset();
             _currentItem.Destroyed += DestroyItem;
+            _currentItem.ForgetAbout += ForgetItem;
             _currentItem.PickedUp();
         }
     }
@@ -69,9 +70,13 @@ public class Inventory : MonoBehaviour
         _currentItem = null;
     }
 
+    public void ForgetItem()
+    {
+        _currentItem = null;
+    }
+
     public void DestroyItem()
     {
-        
         if (_currentItem == null)
             return;
         Debug.Log($"Destroy item {_currentItem.gameObject.name}");
