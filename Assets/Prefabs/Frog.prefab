@@ -438,6 +438,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _minDistanceToTarget: 1
+  _jumpCooldown: 1
+  _jumpTime: 0.4
 --- !u!1 &9007904095697577989
 GameObject:
   m_ObjectHideFlags: 0
@@ -483,3 +485,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _minDistanceToTarget: 2
+  _jumpCooldown: 1
+  _jumpTime: 0.4
