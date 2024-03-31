@@ -69,6 +69,7 @@ public class PlayerKickController : MonoBehaviour
         _isCooldown = true;
         StartCoroutine(Cooldown());
 
+        AudioPlayer.Instance.PlaySFX(AudioPlayer.SFX.kick);
 
         //count = Physics2D.OverlapCollider(_kickArea, contactFilter, colliders);
         foreach (var collider in GetFrogsInKickArea())
@@ -99,7 +100,7 @@ public class PlayerKickController : MonoBehaviour
         Rigidbody2D rb = collider.GetComponent<Rigidbody2D>();
         rb.AddForce(direction * _kickForce, ForceMode2D.Impulse);
 
-
+        AudioPlayer.Instance.PlaySFX(AudioPlayer.SFX.frog);
     }
 
     private void RotateGameObjectTo(Vector2 pos, GameObject gameObj)

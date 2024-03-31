@@ -50,6 +50,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _progressBar: {fileID: 4405091718450423520}
+  _audioSFX: 7
+  _playAudio: 1
   _inactiveSprite: {fileID: 21300000, guid: f49d55b10163f9a458569ea27f7132eb, type: 3}
   _activeSprite: {fileID: 21300000, guid: d388163ce1723a340b3239cc4c2af67b, type: 3}
   _spriteRenderer: {fileID: 4319874363155440730}
