@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BreadSlice
   m_EditorClassIdentifier: 
   _name: 
-  _object: {fileID: 0}
+  _object: {fileID: 2479178640365231240, guid: 5a5451da9bb9fcd41b2c30a73b90578d, type: 3}
   _dishIcon: {fileID: 21300000, guid: 87052d73e910fc549ad96cc7098cdf1b, type: 3}
   _requiredInstructions:
   - {fileID: 11400000, guid: 8d1cef008adf89b4d99582786c79a4f8, type: 2}

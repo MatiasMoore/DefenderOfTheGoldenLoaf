@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ChoppedTomato
   m_EditorClassIdentifier: 
   _name: 
-  _object: {fileID: 0}
+  _object: {fileID: 2479178640365231240, guid: 6c32ff800d677a042bbcbb777709d0fb, type: 3}
   _dishIcon: {fileID: 21300000, guid: c440d36583035da4597f9fc17cc22335, type: 3}
   _requiredInstructions:
   - {fileID: 11400000, guid: 0e7acad1c3cc5ef45ba42c7ae589886a, type: 2}

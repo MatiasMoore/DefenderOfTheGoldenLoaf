@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Loaf
   m_EditorClassIdentifier: 
   _name: 
-  _object: {fileID: 0}
+  _object: {fileID: 2479178640365231240, guid: 9f0ff71b6b4aad144a3d03ef65f63dca, type: 3}
   _dishIcon: {fileID: 21300000, guid: 2151dc30d9116234ea1b58e6da008be2, type: 3}
   _requiredInstructions: []

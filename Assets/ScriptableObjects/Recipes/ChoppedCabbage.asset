@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ChoppedCabbage
   m_EditorClassIdentifier: 
   _name: 
-  _object: {fileID: 0}
+  _object: {fileID: 2479178640365231240, guid: 55f548437733b3c419a41e8cbe7fc8ac, type: 3}
   _dishIcon: {fileID: 21300000, guid: 299d9f8d862558e419d4752ad787648c, type: 3}
   _requiredInstructions:
   - {fileID: 11400000, guid: 59258c2fddb7eb048b6456844a397ea6, type: 2}
