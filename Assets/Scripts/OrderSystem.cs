@@ -95,6 +95,7 @@ public class OrderSystem : MonoBehaviour
             Instantiate(_recipeTimerPrefab).GetComponent<RecipeTimer>().SetupObject(elem, _timePerOrder); // ÇÄÅÑÜ ÄÎËÆÍÎ ÇÀÄÀÂÀÒÜÑß ÂĞÅÌß ÍÀ ÏĞÈÃÎÒÎÂËÅÍÈÅ
             var order = new Order(recipe, elem, _timePerOrder);
             AddOrder(order);
+            AudioPlayer.Instance.PlaySFX(AudioPlayer.SFX.orderStart);
         }
         else
         {
