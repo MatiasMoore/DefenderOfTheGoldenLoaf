@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -5,6 +7,9 @@ public class AmmoBar : MonoBehaviour
 {
     [SerializeField]
     private Text _textField;
+
+    [SerializeField]
+    private SliderManager _reloadProgressBar;
 
     [SerializeField]
     private int _maxAmmo;
@@ -35,5 +40,15 @@ public class AmmoBar : MonoBehaviour
     {
         string ammoText = _currentAmmo + " / " + _maxAmmo;
         _textField.text = ammoText;
+    }
+
+    public void UpdateReloadTime(float currentReloadTime, float maxReloadTime)
+    {
+        _reloadProgressBar.UpdateValues(currentReloadTime, maxReloadTime);
+    }
+
+    public void SetActiveReloadBar(bool isActive)
+    {
+        _reloadProgressBar.gameObject.SetActive(isActive);
     }
 }

@@ -5,6 +5,7 @@ using static UnityEngine.GraphicsBuffer;
 
 public class PlayerKickController : MonoBehaviour
 {
+    [Header("Kick")]
     [SerializeField]
     private GameObject _kickAreaHolder;
     [SerializeField]
@@ -19,8 +20,14 @@ public class PlayerKickController : MonoBehaviour
     private Animator _playerAnimator;
     [SerializeField]
     private Animator _smokeAnimator;
-
-    
+    [SerializeField]
+    private float _cooldownTime;
+    private bool _isCooldown = false;
+    [SerializeField]
+    private Stamina _stamina;
+    [SerializeField]
+    private int _staminaCost;
+ 
     public void Init()
     {
         PlayerControls.Instance.AttackKickEvent += Kick;
@@ -28,6 +35,16 @@ public class PlayerKickController : MonoBehaviour
 
     private void Kick(Vector2 direction)
     {
+        if (_isCooldown)
+        {
+            return;
+        }
+
+        if (!_stamina.DecreaseStamina(_staminaCost))
+        {
+            return;
+        }
+ 
         RotateKickAreaTo(direction);
 
         _playerAnimator.SetTrigger("Kick");
@@ -39,13 +56,23 @@ public class PlayerKickController : MonoBehaviour
         contactFilter.layerMask = _frogMask;
         List<Collider2D> colliders = new List<Collider2D>();
         int count = _kickArea.OverlapCollider(contactFilter, colliders);
-        
+        _isCooldown = true;
+        StartCoroutine(Cooldown());
+
+
         foreach (var collider in colliders)
         {
             Debug.Log($"Kick to {collider.gameObject.name}");
             Push(collider);
         }
 
+    }
+
+    private IEnumerator Cooldown()
+    {
+        yield return new WaitForSeconds(_cooldownTime);
+        _isCooldown = false;
+        yield break;
     }
 
     private void Push(Collider2D collider)
