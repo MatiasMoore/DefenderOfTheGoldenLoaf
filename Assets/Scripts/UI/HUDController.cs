@@ -130,6 +130,12 @@ public class HUDController : MonoBehaviour
     {
         Time.timeScale = 1;
         _recipeBook.style.display = DisplayStyle.None;
+
+        VisualElement[] page = _pagesWithRecipes[_currentPageNumber];
+        page[0].style.display = DisplayStyle.None;
+        page[1].style.display = DisplayStyle.None;
+
+        _currentPageNumber = 0;
     }
 
     private void OnPauseMenuContinueButtonClicked(ClickEvent evt)
