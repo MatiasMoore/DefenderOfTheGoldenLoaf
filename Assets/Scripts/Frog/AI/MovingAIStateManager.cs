@@ -17,10 +17,19 @@ public class MovingAIStateManager : AIStateManager
     public event UnityAction OnPickup;
 
     [Serializable]
+    public struct Target
+    {
+        public int weight;
+        public Transform target;
+    }
+
+    [Serializable]
     public struct MovingAIStateParams
     {
-        public List<Transform> possibleTargets;
+        public List<Target> possibleTargets;
+        [HideInInspector]
         public Transform target;
+        [HideInInspector]
         public ObjectMovement objectMovement;
         public Transform escapeTarget;
     }
@@ -56,9 +65,22 @@ public class MovingAIStateManager : AIStateManager
     [ContextMenu("Choose new target")]
     public void ChooseNewTarget()
     {
-        List<Transform> possibleTargets = new List<Transform>(movingAIStateParam.possibleTargets);
-        possibleTargets.Remove(movingAIStateParam.target);
-        movingAIStateParam.target = possibleTargets[Random.Range(0, possibleTargets.Count)];
+        int weightSum = 0;
+        foreach (var target in movingAIStateParam.possibleTargets)
+        {
+            weightSum += target.weight;
+        }
+
+        int randomValue = Random.Range(0, weightSum);
+        foreach (var target in movingAIStateParam.possibleTargets)
+        {
+            randomValue -= target.weight;
+            if (randomValue <= 0)
+            {
+                movingAIStateParam.target = target.target;
+                return;
+            }
+        }
     }
 
     public void StopForSeconds(float seconds)
