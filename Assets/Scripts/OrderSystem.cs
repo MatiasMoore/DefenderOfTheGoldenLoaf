@@ -27,7 +27,7 @@ public class OrderSystem : MonoBehaviour
         {
             if (table.IsFree())
             {
-                var dish = new Dish(_recipes[0]);
+                var dish = new Dish(_recipes[Random.Range(0, _recipes.Count)]);
                 var elem = _controller.AddRecipeElement(dish.GetRecipe());
                 var order = new Order(dish, table, elem);
                 AddOrder(order);
