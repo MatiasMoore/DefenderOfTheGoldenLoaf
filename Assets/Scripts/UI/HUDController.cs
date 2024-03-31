@@ -9,13 +9,16 @@ public class HUDController : MonoBehaviour
     private VisualElement _root;
 
     private Button _pauseButton;
-    private Button _continueButton;
+    private Button _pauseMenuContinueButton;
+    private Button _explanationPanelInPauseMenuButton;
     private Button _exitButton;
+    private Button _explanationPanelContinueButton;
 
     private ProgressBar _levelProgressBar;
 
     private VisualElement _recipesContainer;
     private VisualElement _pauseMenu;
+    private VisualElement _explanationPanel;
 
     private void OnEnable()
     {
@@ -33,10 +36,13 @@ public class HUDController : MonoBehaviour
     {
         _recipesContainer = _root.Q<VisualElement>("recipesContainer");
         _pauseMenu = _root.Q<VisualElement>("pauseMenu");
+        _explanationPanel = _root.Q<VisualElement>("explanationPanel");
 
         _pauseButton = _root.Q<Button>("pauseButton");
-        _continueButton = _root.Q<Button>("continueButton");
+        _pauseMenuContinueButton = _pauseMenu.Q<Button>("continueButton");
+        _explanationPanelInPauseMenuButton = _pauseMenu.Q<Button>("explanationButton");
         _exitButton = _root.Q<Button>("exitButton");
+        _explanationPanelContinueButton = _explanationPanel.Q<Button>("continueButton");
 
         _levelProgressBar = _root.Q<ProgressBar>("levelProgressBar");
     }
@@ -44,14 +50,18 @@ public class HUDController : MonoBehaviour
     private void RegisterCallbacks()
     {
         _pauseButton.RegisterCallback<ClickEvent>(OnPauseButtonClicked);
-        _continueButton.RegisterCallback<ClickEvent>(OnContinueButtonClicked);
+        _pauseMenuContinueButton.RegisterCallback<ClickEvent>(OnPauseMenuContinueButtonClicked);
+        _explanationPanelContinueButton.RegisterCallback<ClickEvent>(OnExplanationPanelContinueButtonClicked);
+        _explanationPanelInPauseMenuButton.RegisterCallback<ClickEvent>(OnExplanationPanelOpenButtonClicked);
         _exitButton.RegisterCallback<ClickEvent>(OnExitButtonClicked);
     }
 
     private void UnregisterCallbacks()
     {
         _pauseButton.UnregisterCallback<ClickEvent>(OnPauseButtonClicked);
-        _continueButton.UnregisterCallback<ClickEvent>(OnContinueButtonClicked);
+        _pauseMenuContinueButton.UnregisterCallback<ClickEvent>(OnPauseMenuContinueButtonClicked);
+        _explanationPanelContinueButton.UnregisterCallback<ClickEvent>(OnExplanationPanelContinueButtonClicked);
+        _explanationPanelInPauseMenuButton.UnregisterCallback<ClickEvent>(OnExplanationPanelOpenButtonClicked);
         _exitButton.UnregisterCallback<ClickEvent>(OnExitButtonClicked);
     }
     
@@ -63,10 +73,24 @@ public class HUDController : MonoBehaviour
 
     }
 
-    private void OnContinueButtonClicked(ClickEvent evt)
+    private void OnPauseMenuContinueButtonClicked(ClickEvent evt)
     {
         Time.timeScale = 1;
         _pauseMenu.style.display = DisplayStyle.None;
+    }
+
+    private void OnExplanationPanelContinueButtonClicked(ClickEvent evt)
+    {
+        if(_pauseMenu.style.display != DisplayStyle.Flex)
+        {
+            Time.timeScale = 1;
+        }
+        _explanationPanel.style.display = DisplayStyle.None;
+    }
+
+    private void OnExplanationPanelOpenButtonClicked(ClickEvent evt)
+    {
+        _explanationPanel.style.display = DisplayStyle.Flex;
     }
 
     private void OnExitButtonClicked(ClickEvent evt)
