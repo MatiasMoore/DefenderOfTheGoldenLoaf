@@ -30,7 +30,7 @@ public class OrderSystem : MonoBehaviour
         {
             if (order.GetRecipe() == recipe)
             {
-                table.ClearAndDeletePlate();
+                table.ClearAndDeleteItem();
                 FinishOrder(order);
                 return;
             }

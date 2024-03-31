@@ -5,41 +5,29 @@ using UnityEngine.Events;
 
 [RequireComponent(typeof(Collider2D))]
 [RequireComponent(typeof(Rigidbody2D))]
-public class CheckoutTable : MonoBehaviour
+public class CheckoutTable : TablePrimitive
 {
-    [SerializeField]
-    private Transform _attachPoint;
-
     public static UnityAction<CheckoutTable, Recipe> CheckedOutRecipe;
 
-    private Plate _currentPlate;
-
-    public bool IsFree() => _currentPlate == null;
-
-    public void SetPlateOnTable(Plate plate)
+    public override void ItemPickedUp()
     {
-        _currentPlate = plate;
-        _currentPlate.OnPickedUp += ForgetPlate;
-        _currentPlate.transform.parent = _attachPoint;
-        _currentPlate.transform.localPosition = plate.GetAttachOffset();
+    }
+
+    public override void ItemPlaced()
+    {
         Checkout();
     }
 
-    public void ForgetPlate()
+    private void Checkout()
     {
-        _currentPlate.OnPickedUp -= ForgetPlate;
-        _currentPlate = null;
-    }
+        if (_currentItem != null)
+        {
+            if (_currentItem is Plate)
+            {
+                var currentPlate = (Plate)_currentItem;
+                CheckedOutRecipe?.Invoke(this, currentPlate.GetFinishedRecipe());
+            }
+        }
 
-    public void ClearAndDeletePlate()
-    {
-        Destroy(_currentPlate.gameObject);
-        _currentPlate = null;
-    }
-
-    public void Checkout()
-    {
-        if (_currentPlate != null && _currentPlate.IsFinished())
-            CheckedOutRecipe?.Invoke(this, _currentPlate.GetFinishedRecipe());
     }
 }
