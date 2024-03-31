@@ -17,6 +17,7 @@ public class Combinator : InventoryItem
     [SerializeField]
     private float _delay = 1;
 
+    private InventoryItem _item;
     private Coroutine _finishing = null;
     private List<IngredientWithInstruction> _addedIngredients = new();
     private Recipe _finishedRecipe = null;
@@ -119,7 +120,19 @@ public class Combinator : InventoryItem
         _finishedRecipe = recipe;
         FinishedRecipe?.Invoke(this, _finishedRecipe);
         var obj = Instantiate(_finishedRecipe.GetGameObj(), transform.position, Quaternion.identity, this.transform);
-
+        if (obj.TryGetComponent<InventoryItem>(out InventoryItem item))
+        {
+            _item = item;
+            _item.OnPickedUp += Clear;
+        }
         _finishing = null;
+    }
+
+    private void Clear()
+    {
+        _addedIngredients = new List<IngredientWithInstruction>();
+        _finishedRecipe = null;
+        _item.OnPickedUp -= Clear;
+        _item = null;
     }
 }
