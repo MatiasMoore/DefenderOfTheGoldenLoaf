@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -7,6 +8,8 @@ public class HUDController : MonoBehaviour
     private VisualElement _root;
 
     private Button _pauseButton;
+
+    private ProgressBar _levelProgressBar;
 
     private VisualElement _recipesContainer;
 
@@ -26,6 +29,7 @@ public class HUDController : MonoBehaviour
     {
         _recipesContainer = _root.Q<VisualElement>("recipesContainer");
         _pauseButton = _root.Q<Button>("pauseButton");
+        _levelProgressBar = _root.Q<ProgressBar>("levelProgressBar");
     }
 
     private void RegisterCallbacks()
@@ -96,5 +100,10 @@ public class HUDController : MonoBehaviour
     public void RemoveRecipeElement(VisualElement recipe)
     {
         recipe.RemoveFromHierarchy();
+    }
+
+    public void ChangeLevelProgressBarValue(float value)
+    {
+        _levelProgressBar.value = value;
     }
 }
