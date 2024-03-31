@@ -70,3 +70,33 @@
     transition-duration: 0s;
     transition-timing-function: ease-out;
 }
+
+.unity-progress-bar__container {
+    width: 500px;
+    height: 90px;
+    min-height: 35px;
+}
+
+.unity-progress-bar__background {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+    background-color: rgb(38, 45, 54);
+}
+
+.unity-progress-bar__progress {
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    margin-top: 8px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    margin-left: 8px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    background-color: rgb(255, 197, 121);
+}
