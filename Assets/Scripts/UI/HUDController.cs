@@ -10,8 +10,9 @@ public class HUDController : MonoBehaviour
 
     private Button _pauseButton;
     private Button _pauseMenuContinueButton;
-    private Button _explanationPanelContinueButton;
+    private Button _explanationPanelInPauseMenuButton;
     private Button _exitButton;
+    private Button _explanationPanelContinueButton;
 
     private ProgressBar _levelProgressBar;
 
@@ -39,6 +40,7 @@ public class HUDController : MonoBehaviour
 
         _pauseButton = _root.Q<Button>("pauseButton");
         _pauseMenuContinueButton = _pauseMenu.Q<Button>("continueButton");
+        _explanationPanelInPauseMenuButton = _pauseMenu.Q<Button>("explanationButton");
         _exitButton = _root.Q<Button>("exitButton");
         _explanationPanelContinueButton = _explanationPanel.Q<Button>("continueButton");
 
@@ -50,6 +52,7 @@ public class HUDController : MonoBehaviour
         _pauseButton.RegisterCallback<ClickEvent>(OnPauseButtonClicked);
         _pauseMenuContinueButton.RegisterCallback<ClickEvent>(OnPauseMenuContinueButtonClicked);
         _explanationPanelContinueButton.RegisterCallback<ClickEvent>(OnExplanationPanelContinueButtonClicked);
+        _explanationPanelInPauseMenuButton.RegisterCallback<ClickEvent>(OnExplanationPanelOpenButtonClicked);
         _exitButton.RegisterCallback<ClickEvent>(OnExitButtonClicked);
     }
 
@@ -57,7 +60,8 @@ public class HUDController : MonoBehaviour
     {
         _pauseButton.UnregisterCallback<ClickEvent>(OnPauseButtonClicked);
         _pauseMenuContinueButton.UnregisterCallback<ClickEvent>(OnPauseMenuContinueButtonClicked);
-        _explanationPanelContinueButton.RegisterCallback<ClickEvent>(OnExplanationPanelContinueButtonClicked);
+        _explanationPanelContinueButton.UnregisterCallback<ClickEvent>(OnExplanationPanelContinueButtonClicked);
+        _explanationPanelInPauseMenuButton.UnregisterCallback<ClickEvent>(OnExplanationPanelOpenButtonClicked);
         _exitButton.UnregisterCallback<ClickEvent>(OnExitButtonClicked);
     }
     
@@ -77,8 +81,16 @@ public class HUDController : MonoBehaviour
 
     private void OnExplanationPanelContinueButtonClicked(ClickEvent evt)
     {
-        Time.timeScale = 1;
+        if(_pauseMenu.style.display != DisplayStyle.Flex)
+        {
+            Time.timeScale = 1;
+        }
         _explanationPanel.style.display = DisplayStyle.None;
+    }
+
+    private void OnExplanationPanelOpenButtonClicked(ClickEvent evt)
+    {
+        _explanationPanel.style.display = DisplayStyle.Flex;
     }
 
     private void OnExitButtonClicked(ClickEvent evt)
