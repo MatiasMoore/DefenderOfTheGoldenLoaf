@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Sandwich
   m_EditorClassIdentifier: 
   _name: 
-  _object: {fileID: 8392174620143707839, guid: 40227862fb2e6dd419539255744b575b, type: 3}
+  _object: {fileID: 2479178640365231240, guid: 4a330fc95fcb92a4aa38ca9df2f48301, type: 3}
   _dishIcon: {fileID: 21300000, guid: 20eee2f32d1b2f54cac4724d8c9e2150, type: 3}
   _requiredInstructions:
   - {fileID: 11400000, guid: cf6c8afc79de2ea4493748d9fccf7de3, type: 2}

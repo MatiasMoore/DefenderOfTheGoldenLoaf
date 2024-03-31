@@ -533,6 +533,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5980732263229335994, guid: 3f73f32d5496adc409904bea7896fbcb, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5980732263229335994, guid: 3f73f32d5496adc409904bea7896fbcb, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2003,6 +2011,10 @@ PrefabInstance:
       propertyPath: _controller
       value: 
       objectReference: {fileID: 1670553351}
+    - target: {fileID: 3581969152086141502, guid: 9ba9fb8822b526347aefba57e20671a7, type: 3}
+      propertyPath: _timePerOrder
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 3581969152086141502, guid: 9ba9fb8822b526347aefba57e20671a7, type: 3}
       propertyPath: _recipeTimerPrefab
       value: 
@@ -5586,6 +5598,14 @@ PrefabInstance:
     - target: {fileID: 4008248222260417481, guid: 93f1084c35ec2c544897c6ab1797eebb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 5860226915034236521, guid: 93f1084c35ec2c544897c6ab1797eebb, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5860226915034236521, guid: 93f1084c35ec2c544897c6ab1797eebb, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

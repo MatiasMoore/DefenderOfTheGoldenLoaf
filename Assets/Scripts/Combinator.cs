@@ -7,6 +7,18 @@ using UnityEngine.Events;
 public class Combinator : InventoryItem
 {
     [SerializeField]
+    private AmmoBar _progressBar;
+
+    [SerializeField]
+    private Sprite _inactiveSprite;
+
+    [SerializeField]
+    private Sprite _activeSprite;
+
+    [SerializeField]
+    private SpriteRenderer _spriteRenderer;
+
+    [SerializeField]
     private Transform _attach;
 
     [SerializeField]
@@ -57,7 +69,7 @@ public class Combinator : InventoryItem
 
     public bool TryToAddIngredient(IngredientItem ingredientItem)
     {
-        if (_finishedRecipe != null && _finishing != null)
+        if (_finishing != null)
             return false;
 
         AddIngredient(ingredientItem);
@@ -131,24 +143,36 @@ public class Combinator : InventoryItem
 
     private IEnumerator FinishRecipeWithDelay(float delay, Recipe recipe)
     {
+        if (_spriteRenderer != null)
+        {
+            _spriteRenderer.sprite = _activeSprite;
+        }
+
+        for (int i = 0; i < _attach.childCount; i++)
+        {
+            Destroy(_attach.GetChild(i).gameObject);
+        }
+
         float time = 0;
         while (time < delay)
         {
             time += Time.deltaTime;
+            if (_progressBar != null)
+                _progressBar.UpdateReloadTime(time, delay);
             yield return null;
         }
 
         _finishedRecipe = recipe;
         FinishedRecipe?.Invoke(this, _finishedRecipe);
-        for (int i = 0; i < _attach.childCount; i++)
-        {
-            Destroy(_attach.GetChild(i).gameObject);
-        }
         var obj = Instantiate(_finishedRecipe.GetGameObj(), transform.position, Quaternion.identity, _attach);
         if (obj.TryGetComponent<InventoryItem>(out InventoryItem item))
         {
             _item = item;
             _item.OnPickedUp += Clear;
+        }
+        if (_spriteRenderer != null)
+        {
+            _spriteRenderer.sprite = _inactiveSprite;
         }
         _finishing = null;
     }
