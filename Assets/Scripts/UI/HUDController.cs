@@ -255,7 +255,8 @@ public class HUDController : MonoBehaviour
         // Добавление Label
         Label timer = new Label();
         timer.name = "timer";
-        timer.text = "";
+        timer.text = recipe.name;
+        timer.style.fontSize = 21;
         timer.AddToClassList("label");
         recipeElement.Add(timer);
 
