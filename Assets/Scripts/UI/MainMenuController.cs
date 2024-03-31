@@ -4,7 +4,7 @@ using UnityEngine.UIElements;
 
 namespace DefenderOfTheGoldenLoaf.UI
 {
-    public class UIController : MonoBehaviour
+    public class MainMenuController : MonoBehaviour
     {
         private VisualElement _root;
 
