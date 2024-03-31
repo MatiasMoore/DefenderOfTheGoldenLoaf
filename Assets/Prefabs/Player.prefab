@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 2273050571306290783}
   - component: {fileID: 9204422831387281722}
   - component: {fileID: 8829340478874423180}
+  - component: {fileID: 3107311869575379482}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -32,7 +33,7 @@ Transform:
   m_GameObject: {fileID: 514491405283734417}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.3039985, y: -1.4007202, z: 0.085462466}
+  m_LocalPosition: {x: 0, y: 0, z: 0.085462466}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -180,6 +181,9 @@ MonoBehaviour:
   _pushTime: 0.3
   _playerAnimator: {fileID: 2884980372609465715}
   _smokeAnimator: {fileID: 1050253950203740069}
+  _cooldownTime: 0.6
+  _stamina: {fileID: 3107311869575379482}
+  _staminaCost: 15
 --- !u!114 &8829340478874423180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -193,6 +197,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _holdAttach: {fileID: 3338903080456778615}
+--- !u!114 &3107311869575379482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 514491405283734417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0507d4458d167ec41b1f2ec23b05e686, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxStamina: 100
+  _staminaPerCycle: 2
+  _currentStamina: 0
+  _infiniteCycles: 1
+  _cycleDuration: 0.2
+  _staminaDelay: 1
 --- !u!1 &1108193114731538241
 GameObject:
   m_ObjectHideFlags: 0
@@ -468,7 +490,7 @@ Transform:
   m_GameObject: {fileID: 7170176898589264798}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.535, y: -0.101, z: 0}
+  m_LocalPosition: {x: 0.56, y: -0.101, z: -1.17}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
