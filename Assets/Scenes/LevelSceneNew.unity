@@ -9802,7 +9802,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4944876423551893496, guid: 43a297a7038db03459eaaaba0c826de9, type: 3}
       propertyPath: _maxCapacity
-      value: 7
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4944876423551893496, guid: 43a297a7038db03459eaaaba0c826de9, type: 3}
       propertyPath: _currentItems
@@ -9818,7 +9818,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4944876423551893496, guid: 43a297a7038db03459eaaaba0c826de9, type: 3}
       propertyPath: _itemsPerCycle
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4944876423551893496, guid: 43a297a7038db03459eaaaba0c826de9, type: 3}
       propertyPath: _ingredientToCreate
