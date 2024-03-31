@@ -2629,6 +2629,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1670553351}
     - target: {fileID: 3581969152086141502, guid: 9ba9fb8822b526347aefba57e20671a7, type: 3}
+      propertyPath: _ordersToWin
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581969152086141502, guid: 9ba9fb8822b526347aefba57e20671a7, type: 3}
       propertyPath: _timePerOrder
       value: 60
       objectReference: {fileID: 0}
@@ -2646,7 +2650,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3581969152086141502, guid: 9ba9fb8822b526347aefba57e20671a7, type: 3}
       propertyPath: _recipes.Array.size
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3581969152086141502, guid: 9ba9fb8822b526347aefba57e20671a7, type: 3}
       propertyPath: _tables.Array.data[0]
@@ -2671,7 +2675,7 @@ PrefabInstance:
     - target: {fileID: 3581969152086141502, guid: 9ba9fb8822b526347aefba57e20671a7, type: 3}
       propertyPath: _recipes.Array.data[5]
       value: 
-      objectReference: {fileID: 11400000, guid: 534847ce0fd2ef24e92b0eff599e1679, type: 2}
+      objectReference: {fileID: 11400000, guid: a6b4323e05d29a3469e2885b6b613ad8, type: 2}
     - target: {fileID: 8658090798180764291, guid: 9ba9fb8822b526347aefba57e20671a7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -9928,7 +9932,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnPoint: {fileID: 1549127580}
-  _maxFrogs: 5
+  _maxFrogs: 15
   _spawnTime: 3
   _frogPrefab: {fileID: 6162739170036624776, guid: 62125cdc48140874bb4c0c56ed3935de, type: 3}
   _params:
