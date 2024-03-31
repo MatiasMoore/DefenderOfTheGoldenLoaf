@@ -77,6 +77,8 @@ public class PlayerControls : MonoBehaviour
 
     public bool IsCursorOverUIObject()
     {
+        return false;
+
         if (EventSystem.current == null) 
             return false;
 
