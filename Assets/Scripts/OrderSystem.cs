@@ -48,6 +48,7 @@ public class OrderSystem : MonoBehaviour
         _finishedOrderCount = 0;
         StopAllCoroutines();
         CreateOrdersOneByOne(_ordersToWin - _finishedOrderCount, _timeBetweenOrders);
+        AudioPlayer.Instance.PlaySFX(AudioPlayer.SFX.shuffle);
     }
 
     private void CreateOrdersOneByOne(int count, float delayBetween)
