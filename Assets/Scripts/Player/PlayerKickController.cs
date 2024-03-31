@@ -61,8 +61,8 @@ public class PlayerKickController : MonoBehaviour
         
         ContactFilter2D contactFilter = new ContactFilter2D();
         contactFilter.layerMask = _frogMask;
-        List<Collider2D> colliders = new List<Collider2D>();
-        int count = _kickArea.OverlapCollider(contactFilter, colliders);
+        
+        var colliders = Physics2D.OverlapAreaAll(_kickArea.bounds.center - _kickArea.bounds.size / 2, _kickArea.bounds.center + _kickArea.bounds.size / 2, _frogMask,0);
         _isCooldown = true;
         StartCoroutine(Cooldown());
 
