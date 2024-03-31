@@ -49,7 +49,7 @@ public class Inventory : MonoBehaviour
 
     public void PickupItemAtPos(Vector2 pos)
     {
-        var collider = Physics2D.OverlapPoint(pos);
+        var collider = Physics2D.OverlapPoint(pos, 1 << LayerMask.NameToLayer("Pickup") | 1 << LayerMask.NameToLayer("Plate"));
         if (collider != null && collider.TryGetComponent<InventoryItem>(out InventoryItem newItem))
         {
             _currentItem = newItem;

@@ -22,11 +22,13 @@ public class IngredientItem : InventoryItem
 
     public override bool UseAtPos(Vector2 pos)
     {
-        var collider = Physics2D.OverlapPoint(pos);
-        if (collider != null && collider.TryGetComponent<RecipeTable>(out RecipeTable table)) 
+        var collider = Physics2D.OverlapPoint(pos, 1 << LayerMask.NameToLayer("Plate"));
+        if (collider != null && collider.TryGetComponent<Plate>(out Plate table)) 
         {
+            Debug.Log("Trying to add to plate!");
             if (table.TryToAddIngredient(_ingredient))
             {
+                Debug.Log("Added to plate!");
                 Destroyed?.Invoke();
                 return true;
             }

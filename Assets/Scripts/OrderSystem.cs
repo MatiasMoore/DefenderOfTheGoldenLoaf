@@ -1,14 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
 public class OrderSystem : MonoBehaviour
 {
     [SerializeField]
-    private List<Recipe> _recipes;
+    private int _maxOrderCount = 3;
 
     [SerializeField]
-    private List<RecipeTable> _tables;
+    private List<Recipe> _recipes;
+
+    //[SerializeField]
+    //private List<Plate> _tables;
 
     [SerializeField]
     private HUDController _controller;
@@ -26,17 +30,13 @@ public class OrderSystem : MonoBehaviour
     [ContextMenu("Create Order")]
     public void CreateOrder()
     {
-        foreach (RecipeTable table in _tables)
+        if (_orders.Count < _maxOrderCount)
         {
-            if (table.IsFree())
-            {
-                var dish = new Dish(_recipes[Random.Range(0, _recipes.Count)]);
-                var elem = _controller.AddRecipeElement(dish.GetRecipe());
-                Instantiate(_recipeTimerPrefab).GetComponent<RecipeTimer>().SetupObject(elem, 3f); // ÇÄÅÑÜ ÄÎËÆÍÎ ÇÀÄÀÂÀÒÜÑß ÂĞÅÌß ÍÀ ÏĞÈÃÎÒÎÂËÅÍÈÅ
-                var order = new Order(dish, table, elem);
-                AddOrder(order);
-                table.SetCurrentDish(dish);
-            }
+            var recipe = _recipes[Random.Range(0, _recipes.Count)];
+            var elem = _controller.AddRecipeElement(recipe);
+            Instantiate(_recipeTimerPrefab).GetComponent<RecipeTimer>().SetupObject(elem, 3f); // ÇÄÅÑÜ ÄÎËÆÍÎ ÇÀÄÀÂÀÒÜÑß ÂĞÅÌß ÍÀ ÏĞÈÃÎÒÎÂËÅÍÈÅ
+            var order = new Order(recipe, elem);
+            AddOrder(order);
         }
     }
 
