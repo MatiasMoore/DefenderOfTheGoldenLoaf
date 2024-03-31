@@ -155,7 +155,7 @@ public class HUDController : MonoBehaviour
     private void OnExitButtonClicked(ClickEvent evt)
     {
         Time.timeScale = 1;
-        SceneManager.LoadSceneAsync(2);
+        SceneManager.LoadSceneAsync(0);
     }
 
     private void OnTryAgainButtonClicked(ClickEvent evt)
