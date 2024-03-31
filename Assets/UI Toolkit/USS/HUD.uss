@@ -42,6 +42,10 @@
     position: relative;
     width: 230px;
     height: 280px;
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
 }
 
 .pauseButton {
@@ -55,6 +59,10 @@
     -unity-background-image-tint-color: rgb(255, 255, 255);
     transition-duration: 0.2s;
     transition-timing-function: ease-in;
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
 }
 
 .pauseButton:active {
