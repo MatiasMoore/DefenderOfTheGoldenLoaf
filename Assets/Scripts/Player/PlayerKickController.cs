@@ -27,10 +27,17 @@ public class PlayerKickController : MonoBehaviour
     private Stamina _stamina;
     [SerializeField]
     private int _staminaCost;
+    [SerializeField]
+    private GameObject _arrowHolder;
  
     public void Init()
     {
         PlayerControls.Instance.AttackKickEvent += Kick;
+    }
+
+    private void Update()
+    {
+        RotateGameObjectTo(PlayerControls.Instance.getTouchWorldPosition2d(), _arrowHolder);
     }
 
     private void Kick(Vector2 direction)
@@ -44,8 +51,8 @@ public class PlayerKickController : MonoBehaviour
         {
             return;
         }
- 
-        RotateKickAreaTo(direction);
+
+        RotateGameObjectTo(direction, _kickAreaHolder);
 
         _playerAnimator.SetTrigger("Kick");
         _smokeAnimator.SetTrigger("Kick");
@@ -91,7 +98,7 @@ public class PlayerKickController : MonoBehaviour
 
     }
 
-    private void RotateKickAreaTo(Vector2 pos)
+    private void RotateGameObjectTo(Vector2 pos, GameObject gameObj)
     {
         Vector2 toPos = pos - (Vector2)transform.position;
 
@@ -99,6 +106,6 @@ public class PlayerKickController : MonoBehaviour
 
         desiredQuat *= Quaternion.AngleAxis(-90, Vector3.up);
 
-        _kickAreaHolder.transform.rotation = desiredQuat;
+        gameObj.transform.rotation = desiredQuat;
     }
 }
