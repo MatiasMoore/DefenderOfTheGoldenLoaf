@@ -1738,6 +1738,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1670553351}
     - target: {fileID: 3581969152086141502, guid: 9ba9fb8822b526347aefba57e20671a7, type: 3}
+      propertyPath: _recipeTimerPrefab
+      value: 
+      objectReference: {fileID: 5523994476890698831, guid: 9b63d4175101b5149a2453962e83eefc, type: 3}
+    - target: {fileID: 3581969152086141502, guid: 9ba9fb8822b526347aefba57e20671a7, type: 3}
       propertyPath: _recipes.Array.size
       value: 2
       objectReference: {fileID: 0}
