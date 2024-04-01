@@ -454,6 +454,7 @@ GameObject:
   - component: {fileID: 84920903}
   - component: {fileID: 84920907}
   - component: {fileID: 84920906}
+  - component: {fileID: 84920908}
   m_Layer: 0
   m_Name: PlayerControls
   m_TagString: Untagged
@@ -476,8 +477,7 @@ MonoBehaviour:
   _positionActionName: CursorPosition
   _mainClick: {fileID: 84920907}
   _alternativeClick: {fileID: 84920906}
-  _scrollUp: {fileID: 0}
-  _scrollDown: {fileID: 0}
+  _attackKick: {fileID: 84920908}
 --- !u!114 &84920904
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -582,6 +582,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pressActionName: MainClick
+  _printDebugMessages: 0
+--- !u!114 &84920908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 84920902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d58c6aef85276cf419cd18d8e279f4a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pressActionName: AttackKick
   _printDebugMessages: 0
 --- !u!4 &133432005 stripped
 Transform:

@@ -23,11 +23,8 @@ public class PlayerControls : MonoBehaviour
     [SerializeField]
     public ButtonControls _alternativeClick;
     [SerializeField]
-    public ButtonControls _scrollUp;
-    [SerializeField]
-    public ButtonControls _scrollDown;
+    public ButtonControls _attackKick;
     
-    private InputAction _attackKick;
     public UnityAction<Vector2> AttackKickEvent;
 
     private InputAction _moveAction;
@@ -45,8 +42,7 @@ public class PlayerControls : MonoBehaviour
         _pressPositionAction = _playerInput.actions[_positionActionName];
         _allControls = GetComponents<ButtonControls>().ToList();
         _moveAction = _playerInput.actions["Move"];
-        _attackKick = _playerInput.actions["AttackKick"];
-        _attackKick.performed += ctx => AttackKick();
+        _attackKick.pressDown += AttackKick;
 
         foreach (var control in _allControls)
         {
