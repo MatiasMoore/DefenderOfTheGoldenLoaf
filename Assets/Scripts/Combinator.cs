@@ -85,6 +85,15 @@ public class Combinator : InventoryItem
 
     public override bool UseAtPos(Vector2 pos)
     {
+        bool success = PlaceAtTable(pos);
+        if (!success)
+            success = TakeIngredient(pos);
+
+        return success;
+    }
+
+    private bool PlaceAtTable(Vector2 pos)
+    {
         var collider = Physics2D.OverlapPoint(pos, 1 << LayerMask.NameToLayer("Checkout"));
         if (collider != null && collider.TryGetComponent<TablePrimitive>(out TablePrimitive table))
         {
@@ -94,6 +103,16 @@ public class Combinator : InventoryItem
                 table.SetItemOnTable(this);
                 return true;
             }
+        }
+        return false;
+    }
+
+    private bool TakeIngredient(Vector2 pos)
+    {
+        var collider = Physics2D.OverlapPoint(pos, 1 << LayerMask.NameToLayer("Pickup"));
+        if (collider != null && collider.TryGetComponent<IngredientItem>(out IngredientItem item))
+        {
+            return item.UseAtPos(this.transform.position);
         }
         return false;
     }

@@ -15,7 +15,16 @@ public class OrderSystem : MonoBehaviour
     private float _timePerOrder = 20f;
 
     [SerializeField]
+    private float _reduceTimePerOrderOnShuffle = 5f;
+
+    [SerializeField]
     private float _timeBetweenOrders = 10f;
+
+    [SerializeField]
+    private int _bonusSpawnChance = 50;
+
+    [SerializeField]
+    private List<GameObject> _bonusItems = new();
 
     [SerializeField]
     private List<Recipe> _recipes;
@@ -45,8 +54,8 @@ public class OrderSystem : MonoBehaviour
     {
         Debug.Log("Shuffling");
         ClearOrders();
-        _finishedOrderCount = 0;
         StopAllCoroutines();
+        _timePerOrder = Mathf.Clamp(_timePerOrder - _reduceTimePerOrderOnShuffle, 0, int.MaxValue);
         CreateOrdersOneByOne(_ordersToWin - _finishedOrderCount, _timeBetweenOrders);
         AudioPlayer.Instance.PlaySFX(AudioPlayer.SFX.shuffle);
     }
@@ -92,9 +101,24 @@ public class OrderSystem : MonoBehaviour
             {
                 table.ClearAndDeleteItem();
                 FinishOrder(order);
+                if (Random.Range(1, 101) >= _bonusSpawnChance)
+                    SpawnRandomBonusAtTable(table);
                 return;
             }
         }
+    }
+
+    private void SpawnRandomBonusAtTable(TablePrimitive table)
+    {
+        if (_bonusItems.Count == 0)
+            return;
+
+        var bonus = _bonusItems[Random.Range(0, _bonusItems.Count)];
+        var bonusObj = Instantiate(bonus, Vector3.zero, Quaternion.identity);
+        if (!bonusObj.TryGetComponent<InventoryItem>(out InventoryItem item))
+            throw new System.Exception("Bonus must be inventory item!");
+
+        table.SetItemOnTable(item);
     }
 
     [ContextMenu("Create Order")]
@@ -132,16 +156,15 @@ public class OrderSystem : MonoBehaviour
         _controller.ChangeLevelProgressBarValue(progress);
     }
 
-    public GameObject _watterbucket;
-    public Transform _spawnPos;
     private void FinishOrder(Order order)
     {
         RemoveOrder(order);
         _finishedOrderCount++;
-        Instantiate(_watterbucket, _spawnPos.position, Quaternion.identity);
         UpdateProgressBar();
         if (_finishedOrderCount == _ordersToWin)
             WinGame();
+        else
+            AudioPlayer.Instance.PlaySFX(AudioPlayer.SFX.orderFinish);
     }
 
     private void FailOrder(Order order)

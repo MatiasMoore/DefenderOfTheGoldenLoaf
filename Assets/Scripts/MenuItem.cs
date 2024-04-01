@@ -8,6 +8,7 @@ public class MenuItem : InventoryItem
     public static UnityAction MenuDestroyed;
     public override void Dropped()
     {
+        Destroy(transform.gameObject);
     }
 
     public override Vector3 GetAttachOffset()

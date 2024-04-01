@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditorInternal.Profiling.Memory.Experimental;
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 
 public class Inventory : MonoBehaviour
 {
@@ -25,32 +27,37 @@ public class Inventory : MonoBehaviour
     {
         Debug.Log("Main action!");
 
-        if (_currentItem == null)
+        if (Vector2.Distance(_playerControls.getTouchWorldPosition2d(), (Vector2)transform.position) > _maxInteractDistance)
             return;
 
-        UseItemAtPos(_playerControls.getTouchWorldPosition2d());
+        if (_currentItem == null)
+        {
+            PickupItemAtPos(_playerControls.getTouchWorldPosition2d());
+        }
+        else
+        {
+            bool success = UseItemAtPos(_playerControls.getTouchWorldPosition2d());
+            if (!success)
+            {
+                PickupItemAtPos(_playerControls.getTouchWorldPosition2d());
+            }
+        }
+
     }
 
     private void AlternativeAction()
     {
         Debug.Log("Alternative action!");
 
-        if ( _currentItem == null)
-        {
-            PickupItemAtPos(_playerControls.getTouchWorldPosition2d());
-        }
-        else
-        {
-            DropItem();
-        }
-    }
-
-    private void UseItemAtPos(Vector2 pos)
-    {
-        if (Vector2.Distance(pos, (Vector2)transform.position) > _maxInteractDistance)
+        if (_currentItem == null)
             return;
 
-        _currentItem.UseAtPos(pos);
+        DropItem();
+    }
+
+    private bool UseItemAtPos(Vector2 pos)
+    {
+        return _currentItem.UseAtPos(pos);
     }
 
     public void PickupItemAtPos(Vector2 pos)
@@ -75,12 +82,7 @@ public class Inventory : MonoBehaviour
             if (!(newItem is Plate))
                 return false;
 
-            _currentItem = newItem;
-            _currentItem.transform.parent = _holdAttach;
-            _currentItem.transform.localPosition = _currentItem.GetAttachOffset();
-            _currentItem.Destroyed += DestroyItem;
-            _currentItem.ForgetAbout += ForgetItem;
-            _currentItem.PickedUp();
+            PickupItem(newItem);
             return true;
         }
 
@@ -92,16 +94,24 @@ public class Inventory : MonoBehaviour
         var collider = Physics2D.OverlapPoint(pos, 1 << LayerMask.NameToLayer("Pickup"));
         if (collider != null && collider.TryGetComponent<InventoryItem>(out InventoryItem newItem))
         {
-            _currentItem = newItem;
-            _currentItem.transform.parent = _holdAttach;
-            _currentItem.transform.localPosition = _currentItem.GetAttachOffset();
-            _currentItem.Destroyed += DestroyItem;
-            _currentItem.ForgetAbout += ForgetItem;
-            _currentItem.PickedUp();
+            PickupItem(newItem);
             return true;
         }
 
         return false;
+    }
+
+    private void PickupItem(InventoryItem newItem)
+    {
+        if (_currentItem != null)
+            DropItem();
+
+        _currentItem = newItem;
+        _currentItem.transform.parent = _holdAttach;
+        _currentItem.transform.localPosition = _currentItem.GetAttachOffset();
+        _currentItem.Destroyed += DestroyItem;
+        _currentItem.ForgetAbout += ForgetItem;
+        _currentItem.PickedUp();
     }
 
     public void DropItem()

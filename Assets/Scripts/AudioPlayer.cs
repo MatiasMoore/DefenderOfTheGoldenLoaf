@@ -22,7 +22,9 @@ public class AudioPlayer : MonoBehaviour
         cooking,
         pickup,
         orderStart,
-        shuffle
+        shuffle,
+        waterSplash1,
+        waterSplash2
     }
 
     static public AudioPlayer Instance { get; private set; }

@@ -22,6 +22,9 @@ public class WaterBucket : Consumable
     [SerializeField]
     public int _usesAmount;
 
+    [SerializeField]
+    private List<AudioPlayer.SFX> _soundEffects = new ();
+
     private bool _isCooldown;
 
 
@@ -37,7 +40,7 @@ public class WaterBucket : Consumable
 
     public override void PickedUp()
     {
-        
+        OnPickedUp?.Invoke();
     }
 
     public override bool UseAtPos(Vector2 pos)
@@ -71,7 +74,10 @@ public class WaterBucket : Consumable
         _cooldown.StartTimer();
 
         _isCooldown = true;
-        
+
+        var sfx = _soundEffects[Random.Range(0, _soundEffects.Count)];
+        AudioPlayer.Instance.PlaySFX(sfx);
+
         if (_usesAmount <= 0)
         {
             Destroyed?.Invoke();
