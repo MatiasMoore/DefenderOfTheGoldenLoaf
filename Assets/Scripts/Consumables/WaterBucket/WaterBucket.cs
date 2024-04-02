@@ -16,7 +16,6 @@ public class WaterBucket : Consumable
 
     private SlowArea _slowAreaComponent;
 
-    private Timer _cooldown;
     [SerializeField]
     public float _cooldownTime;
     [SerializeField]
@@ -69,9 +68,7 @@ public class WaterBucket : Consumable
         
         _usesAmount--;
 
-        _cooldown = new Timer(_cooldownTime);
-        _cooldown.OnTimerDone += StopCooldown;
-        _cooldown.StartTimer();
+        StartCoroutine(Cooldown());
 
         _isCooldown = true;
 
@@ -86,18 +83,11 @@ public class WaterBucket : Consumable
         return true;
     }
 
-    private void Update()
+    private IEnumerator Cooldown()
     {
-        if (_cooldown == null)
-        {
-            return;
-        }
-        _cooldown.Tick();
-    }
-
-    private void StopCooldown()
-    {
+        yield return new WaitForSeconds(_cooldownTime);
         _isCooldown = false;
+        yield break;
     }
 
     private bool CanBePlaced(Vector2 pos)
