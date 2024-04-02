@@ -12,8 +12,6 @@ public class SlowArea : MonoBehaviour
     [SerializeField]
     private bool _isActive = false;
 
-    private Timer _timer;
-
     private Dictionary<Collider2D, float> _frogsSpeed = new Dictionary<Collider2D, float>();
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -75,18 +73,14 @@ public class SlowArea : MonoBehaviour
 
     public void ActivateForSeconds(float seconds)
     {
-        _timer = new Timer(seconds);
-        _timer.OnTimerDone += Deactivate;
-        _timer.StartTimer();
         Activate();
+        StartCoroutine(DeactivateBySeconds(seconds));
     }
 
-    private void Update()
+    private IEnumerator DeactivateBySeconds(float seconds)
     {
-        if (_timer != null)
-        {
-            _timer.Tick();
-        }
+        yield return new WaitForSeconds(seconds);
+        Deactivate();
+        yield break;
     }
-
 }
