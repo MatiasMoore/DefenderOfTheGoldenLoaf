@@ -64,6 +64,7 @@ public class PlayerControls : MonoBehaviour
 
     private void OnDisable()
     {
+        _attackKick.pressDown -= AttackKick;
         foreach (var control in _allControls)
         {
             control.Disable();

@@ -38,10 +38,16 @@ public class OrderSystem : MonoBehaviour
     private int _finishedOrderCount = 0;
     private List<Order> _orders = new ();
 
-    private void Awake()
+    private void OnEnable()
     {
         CheckoutTable.CheckedOutRecipe += CheckedOutRecipe;
         MenuItem.MenuDestroyed += ShuffleMenu;
+    }
+
+    private void OnDisable()
+    {
+        CheckoutTable.CheckedOutRecipe -= CheckedOutRecipe;
+        MenuItem.MenuDestroyed -= ShuffleMenu;
     }
 
     private void Start()
@@ -54,7 +60,7 @@ public class OrderSystem : MonoBehaviour
     {
         Debug.Log("Shuffling");
         ClearOrders();
-        StopAllCoroutines();
+        //StopAllCoroutines();
         _timePerOrder = Mathf.Clamp(_timePerOrder - _reduceTimePerOrderOnShuffle, 0, int.MaxValue);
         CreateOrdersOneByOne(_ordersToWin - _finishedOrderCount, _timeBetweenOrders);
         AudioPlayer.Instance.PlaySFX(AudioPlayer.SFX.shuffle);

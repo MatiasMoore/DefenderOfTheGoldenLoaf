@@ -34,8 +34,18 @@ public class Stamina : MonoBehaviour
     private void Start()
     {
         StartCreating();
+    }
+
+    private void OnEnable()
+    {
         StaminaChanged += UpdateStamina;
     }
+
+    private void OnDisable()
+    {
+        StaminaChanged -= UpdateStamina;
+    }
+
     private void UpdateStamina(int stamina)
     {
         _stabinaBar.UpdateReloadTime(_currentStamina, _maxStamina);

@@ -119,13 +119,14 @@ public class Inventory : MonoBehaviour
         if (_currentItem == null)
             return;
         _currentItem.transform.parent = null;
-        _currentItem.Dropped();
-        _currentItem = null;
+        ForgetItem();
         AudioPlayer.Instance.PlaySFX(AudioPlayer.SFX.pickup);
     }
 
     public void ForgetItem()
     {
+        _currentItem.Destroyed -= DestroyItem;
+        _currentItem.ForgetAbout -= ForgetItem;
         _currentItem = null;
     }
 
