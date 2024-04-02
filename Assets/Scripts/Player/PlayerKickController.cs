@@ -114,16 +114,12 @@ public class PlayerKickController : MonoBehaviour
         gameObj.transform.rotation = desiredQuat;
     }
 
-    private List<GameObject> GetAllFrogs()
+    private Collider2D[] GetAllFrogsInDistance(float distance)
+
     {
-       
-        List<GameObject> frogs = new List<GameObject>();
-        foreach (var frog in GameObject.FindGameObjectsWithTag("Frog"))
-        {
-            frogs.Add(frog);
-        }
-        return frogs;
-        
+        Vector2 lowerLeftCorner = new Vector2(transform.position.x - distance, transform.position.y - distance);
+        Vector2 upperRightCorner = new Vector2(transform.position.x + distance, transform.position.y + distance);
+        return Physics2D.OverlapAreaAll(lowerLeftCorner, upperRightCorner, _frogMask);
     }
 
     private bool CanSeeFrog(GameObject frog)
@@ -137,15 +133,14 @@ public class PlayerKickController : MonoBehaviour
         
         List<GameObject> frogs = new List<GameObject>();
         Vector2 watchDirection = PlayerControls.Instance.getTouchWorldPosition2d() - (Vector2)transform.position;
-        foreach (var frog in GetAllFrogs())
+        foreach (var frog in GetAllFrogsInDistance( _distance))
         {
             Vector2 toFrog = frog.transform.position - transform.position;
             float angle = Vector2.Angle(watchDirection, toFrog);      
-            float distance = toFrog.magnitude;
 
-            if (angle <= (_fovAngle / 2f) && distance <= _distance && CanSeeFrog(frog))
+            if (angle <= (_fovAngle / 2f) && CanSeeFrog(frog.gameObject))
             {
-                frogs.Add(frog);      
+                frogs.Add(frog.gameObject);      
             }             
         }
         return frogs;
