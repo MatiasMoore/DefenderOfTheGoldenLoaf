@@ -1,37 +1,45 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 using static UnityEngine.GraphicsBuffer;
 
 public class PlayerKickController : MonoBehaviour
 {
-    [Header("Kick")]
-    [SerializeField]
-    private GameObject _kickAreaHolder;
-    [SerializeField]
-    private Collider2D _kickArea;
-    [SerializeField]
+    [Header("Kick params")]
+    [SerializeField, Range(0, 179)]
+    private float _fovAngle;
+    [SerializeField, Range(0, 10)]
+    private float _distance;
+    [SerializeField, Range(0,3)]
     private float _kickForce;
-    [SerializeField]
-    private LayerMask _frogMask;
-    [SerializeField]
+    [SerializeField, Min(0)]
+    private int _staminaCost;
+    [SerializeField, Min(0)]
+    private float _cooldownTime;
+    [SerializeField, Min(0)]
     private float _pushTime;
+
+    [Header("Configuration")]
     [SerializeField]
     private Animator _playerAnimator;
     [SerializeField]
     private Animator _smokeAnimator;
     [SerializeField]
-    private float _cooldownTime;
-    private bool _isCooldown = false;
+    private GameObject _smokeHolder;
     [SerializeField]
     private Stamina _stamina;
     [SerializeField]
-    private int _staminaCost;
-    [SerializeField]
     private GameObject _arrowHolder;
     [SerializeField]
-    private Animator _handAnimator;
- 
+    private LayerMask _frogMask;
+    [SerializeField]
+    private LayerMask _wallMask;
+
+    private bool _isCooldown = false;
+
     public void Init()
     {
         PlayerControls.Instance.AttackKickEvent += Kick;
@@ -54,27 +62,16 @@ public class PlayerKickController : MonoBehaviour
             return;
         }
 
-        RotateGameObjectTo(direction, _kickAreaHolder);
+        RotateGameObjectTo(direction, _smokeHolder);
 
         _playerAnimator.SetTrigger("Kick");
         _smokeAnimator.SetTrigger("Kick");
-        _handAnimator.SetTrigger("Kick");
-        //Debug.Log($"Kick to {direction}");
 
-
-        ContactFilter2D contactFilter = new ContactFilter2D();
-        contactFilter.layerMask = _frogMask;
-        contactFilter.useLayerMask = true;
-
-        //var colliders = Physics2D.OverlapAreaAll(_kickArea.bounds.center - _kickArea.bounds.size / 2, _kickArea.bounds.center + _kickArea.bounds.size / 2, _frogMask,0);
-        //List<Collider2D> colliders = new List<Collider2D>();
-        //var count = Physics2D.OverlapCollider(_kickArea, contactFilter, colliders);
         _isCooldown = true;
         StartCoroutine(Cooldown());
 
         AudioPlayer.Instance.PlaySFX(AudioPlayer.SFX.kick);
 
-        //count = Physics2D.OverlapCollider(_kickArea, contactFilter, colliders);
         foreach (var collider in GetFrogsInKickArea())
         {
             Debug.Log($"Kick to {collider.gameObject.name}");
@@ -129,16 +126,11 @@ public class PlayerKickController : MonoBehaviour
         
     }
 
-    public LayerMask _wallMask;
     private bool CanSeeFrog(GameObject frog)
     {
-        //wall between player and frog
         RaycastHit2D hit = Physics2D.Raycast(transform.position, frog.transform.position - transform.position, Vector2.Distance(transform.position, frog.transform.position), _wallMask);
         return hit.collider == null;
     }
-
-    public float _dot;
-    public float _distance;
 
     private List<GameObject> GetFrogsInKickArea()
     {
@@ -148,14 +140,12 @@ public class PlayerKickController : MonoBehaviour
         foreach (var frog in GetAllFrogs())
         {
             Vector2 toFrog = frog.transform.position - transform.position;
-            float dot = Vector2.Dot(toFrog.normalized, watchDirection.normalized);
+            float angle = Vector2.Angle(watchDirection, toFrog);      
             float distance = toFrog.magnitude;
-            if (dot > _dot && distance < _distance)
+
+            if (angle <= (_fovAngle / 2f) && distance <= _distance && CanSeeFrog(frog))
             {
-                if (CanSeeFrog(frog))
-                {
-                    frogs.Add(frog);
-                }          
+                frogs.Add(frog);      
             }             
         }
         return frogs;
@@ -163,6 +153,33 @@ public class PlayerKickController : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        DebugDraw.DrawSphere(transform.position, _distance, Color.red);
+        Vector2 watchDirection;
+        if (Application.isPlaying)
+        {
+            watchDirection = PlayerControls.Instance.getTouchWorldPosition2d() - (Vector2)transform.position;     
+            watchDirection.Normalize();
+        }
+        else
+        {
+            watchDirection = Vector2.right;
+        }
+
+        float halfFov = _fovAngle / 2f;
+        Quaternion leftRayRotation = Quaternion.AngleAxis(-halfFov, Vector3.forward);
+        Quaternion rightRayRotation = Quaternion.AngleAxis(halfFov, Vector3.forward);
+     
+        Vector2 leftRayDirection = leftRayRotation * watchDirection;
+        Vector2 rightRayDirection = rightRayRotation * watchDirection;
+        
+        float angleRad = Mathf.Deg2Rad * (90 - halfFov);
+        float boundaryDistance = _distance / Mathf.Sin(angleRad);
+
+        Vector2 leftBoundary = (Vector2)transform.position + leftRayDirection * boundaryDistance;
+        Vector2 rightBoundary = (Vector2)transform.position + rightRayDirection * boundaryDistance;
+
+        DebugDraw.DrawLine(transform.position, leftBoundary, Color.red);
+        DebugDraw.DrawLine(transform.position, rightBoundary, Color.red);
+        DebugDraw.DrawLine(leftBoundary, rightBoundary, Color.red);
+
     }
 }
