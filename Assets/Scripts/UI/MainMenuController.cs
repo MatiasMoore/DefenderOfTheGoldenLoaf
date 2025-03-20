@@ -49,8 +49,8 @@ namespace DefenderOfTheGoldenLoaf.UI
         // ------ Callbacks Handlers ------
         private void OnPlayButtonClicked(ClickEvent evt)
         {
-            Debug.Log("Play button clicked!");
-            SceneManager.LoadScene(1); // TEMP SOLUTION
+            Time.timeScale = 0;
+            SceneManager.LoadSceneAsync(1);
         }
 
         private void OnSettingsButtonClicked(ClickEvent evt)
@@ -60,7 +60,7 @@ namespace DefenderOfTheGoldenLoaf.UI
 
         private void OnExitButtonClicked(ClickEvent evt)
         {
-            Debug.Log("Exit button clicked!");
+            Application.Quit();
         }
     }
 }

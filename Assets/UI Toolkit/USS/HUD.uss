@@ -42,6 +42,10 @@
     position: relative;
     width: 230px;
     height: 280px;
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
 }
 
 .pauseButton {
@@ -55,6 +59,10 @@
     -unity-background-image-tint-color: rgb(255, 255, 255);
     transition-duration: 0.2s;
     transition-timing-function: ease-in;
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
 }
 
 .pauseButton:active {
@@ -69,4 +77,210 @@
     border-bottom-left-radius: 0;
     transition-duration: 0s;
     transition-timing-function: ease-out;
+}
+
+.unity-progress-bar__container {
+    width: 500px;
+    height: 90px;
+    min-height: 35px;
+}
+
+.unity-progress-bar__background {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+    background-color: rgb(38, 45, 54);
+}
+
+.unity-progress-bar__progress {
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    margin-top: 8px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    margin-left: 8px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    background-color: rgb(255, 197, 121);
+}
+
+.button--pauseMenu {
+    font-size: 48px;
+    -unity-font-definition: initial;
+    -unity-font: url('project://database/Assets/Fonts/vcrosdmonorusbyd.ttf?fileID=12800000&guid=02d45b90076188f47b79dfe301da7c62&type=3#vcrosdmonorusbyd');
+    color: rgb(255, 255, 255);
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    -unity-background-scale-mode: stretch-to-fill;
+    background-image: url('project://database/Assets/Pictures/buttonIdle.png?fileID=21300000&guid=b34b42d567661f5449cef8758ea46a55&type=3#buttonIdle');
+    width: 350px;
+    height: 110px;
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+    background-color: rgba(188, 188, 188, 0);
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    transition-duration: 1s;
+    transition-timing-function: ease-out;
+}
+
+.button--pauseMenu:active {
+    background-image: url('project://database/Assets/Pictures/buttonPressed.png?fileID=2800000&guid=826d0fca7cc93644a8adf5e64226d2a6&type=3#buttonPressed');
+    transition-duration: 0s;
+    transition-timing-function: ease-out;
+}
+
+.recipeBookPrevButton:active {
+    background-image: url('project://database/Assets/Pictures/prevButton-clicked.png?fileID=21300000&guid=bb9d5f2c36d1b674c8fd65a64f68cff5&type=3#prevButton-clicked');
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    transition-duration: 0s;
+    transition-timing-function: ease-out;
+}
+
+.recipeBookPrevButton {
+    align-self: center;
+    font-size: 48px;
+    position: absolute;
+    top: 650px;
+    left: 50px;
+    width: 100px;
+    background-image: url('project://database/Assets/Pictures/prevButton.png?fileID=21300000&guid=af2840f6a52e8344a95cdc7df29dd99d&type=3#prevButton');
+    height: 100px;
+    background-color: rgba(188, 188, 188, 0);
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+}
+
+.recipeBookNextButton:active {
+    background-image: url('project://database/Assets/Pictures/nextButton-clicked.png?fileID=21300000&guid=b34165696b903624499fe983d9f06a7a&type=3#nextButton-clicked');
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    transition-duration: 0s;
+    transition-timing-function: ease-out;
+}
+
+.recipeBookNextButton {
+    align-self: center;
+    font-size: 48px;
+    position: absolute;
+    top: 650px;
+    left: 50px;
+    width: 100px;
+    background-image: url('project://database/Assets/Pictures/nextButton.png?fileID=21300000&guid=5e0c37c28dbe6364fb3424b09b7b2d4b&type=3#nextButton');
+    height: 100px;
+    background-color: rgba(188, 188, 188, 0);
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+}
+
+.recipeBookButton:active {
+    background-image: url('project://database/Assets/Pictures/Info_Pressed.png?fileID=21300000&guid=f9fe37abedaf387468a51744a3dbc093&type=3#Info_Pressed');
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    transition-duration: 0s;
+    transition-timing-function: ease-out;
+}
+
+.recipeBookButton {
+    align-self: center;
+    font-size: 48px;
+    position: absolute;
+    top: 650px;
+    left: 50px;
+    width: 100px;
+    background-image: url('project://database/Assets/Pictures/Info_Unpressed.png?fileID=21300000&guid=ff63d9686e0e79d45b05290fca6c1cae&type=3#Info_Unpressed');
+    height: 100px;
+    background-color: rgba(188, 188, 188, 0);
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+}
+
+.recipeBookCloseButton:active {
+    background-image: url('project://database/Assets/Pictures/closeButton-clicked.png?fileID=21300000&guid=0b0402aff06d0284caa544266dbea1d5&type=3#closeButton-clicked');
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    transition-duration: 0s;
+    transition-timing-function: ease-out;
+}
+
+.recipeBookCloseButton {
+    align-self: center;
+    font-size: 48px;
+    position: absolute;
+    top: 650px;
+    left: 50px;
+    width: 100px;
+    background-image: url('project://database/Assets/Pictures/closeButton.png?fileID=21300000&guid=5b47d728809911d4dadcd9188c1df082&type=3#closeButton');
+    height: 100px;
+    background-color: rgba(188, 188, 188, 0);
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+}
+
+.rightPage {
+    height: 783px;
+    position: absolute;
+    top: 29px;
+    left: 680px;
+    width: 598px;
+}
+
+.leftPage {
+    height: 818px;
+    align-items: center;
+    justify-content: flex-start;
+    align-self: center;
+    position: absolute;
+    left: 100px;
+    top: 20px;
+    width: 580px;
 }

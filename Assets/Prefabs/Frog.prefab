@@ -88,6 +88,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4719968252604265889}
   - component: {fileID: 7219654556788286620}
+  - component: {fileID: 8662305745582853520}
   m_Layer: 6
   m_Name: Sprite
   m_TagString: Untagged
@@ -162,6 +163,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &8662305745582853520
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3950408012050812900}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7887ddd871fc4cf4cbf12f867e9fed42, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &6162739170036624776
 GameObject:
   m_ObjectHideFlags: 0
@@ -180,7 +202,7 @@ GameObject:
   - component: {fileID: 6548739512960200454}
   m_Layer: 6
   m_Name: Frog
-  m_TagString: Untagged
+  m_TagString: Frog
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -362,6 +384,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _holdAttach: {fileID: 8630568493055959450}
+  _maxInteractDistance: 4
 --- !u!1 &6835887972935047435
 GameObject:
   m_ObjectHideFlags: 0
@@ -437,7 +460,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d706847a55a8afc4597efb2396467b31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _minDistanceToTarget: 1
+  _minDistanceToTarget: 1.5
+  _jumpCooldown: 1
+  _jumpTime: 0.4
+  _animator: {fileID: 8662305745582853520}
 --- !u!1 &9007904095697577989
 GameObject:
   m_ObjectHideFlags: 0
@@ -482,4 +508,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65bf3eada32597841a575a3a3bdc2a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _minDistanceToTarget: 2
+  _minDistanceToTarget: 1.5
+  _jumpCooldown: 1
+  _jumpTime: 0.4
+  _animator: {fileID: 8662305745582853520}
