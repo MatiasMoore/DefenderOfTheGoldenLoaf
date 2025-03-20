@@ -12,8 +12,7 @@
 
 # Видеодемонстрация
 
-**Записать видео и добавить сюда**
-[![Demo](https://img.youtube.com/vi/VTKHZ2jKS24/0.jpg)](https://www.youtube.com/watch?v=VTKHZ2jKS24)
+[![Demo](https://img.youtube.com/vi/SUVc2aVeFIk/0.jpg)](https://www.youtube.com/watch?v=SUVc2aVeFIk)
 
 # Документация
 
